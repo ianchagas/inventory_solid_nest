@@ -1,0 +1,21 @@
+{
+    "collection": "@nestjs/schematics",
+    "sourceRoot": "src",
+    "projects": {
+      "shared": {
+        "type": "library",
+        "root": "libs/shared",
+        "entryFile": "index",
+        "sourceRoot": "libs/shared/src",
+        "compilerOptions": {
+          "tsConfigPath": "libs/shared/tsconfig.lib.json"
+        }
+    },
+    "compilerOptions": {
+      "webpack": true,
+      "plugins": [
+        "@nestjs/swagger/plugin"
+      ]
+    }
+  }
+}
