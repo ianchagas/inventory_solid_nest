@@ -3,14 +3,14 @@ version: "3.7"
 services:
   database:
     image: postgres
-    container_name: melanzane
+    container_name: melanzaneDB
     restart: always
     ports:
-      - 5432:5432
+      - 5434:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=melanzaneDB
+      - POSTGRES_DB=melanzane
     volumes:
       - pgdata:/data/postgres
 volumes:
