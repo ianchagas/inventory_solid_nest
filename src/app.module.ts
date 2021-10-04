@@ -3,10 +3,12 @@ import { getMetadataArgsStorage } from 'typeorm';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { UserModule } from '@user/user';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    UserModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,

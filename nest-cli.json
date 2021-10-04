@@ -1,21 +1,33 @@
 {
-    "collection": "@nestjs/schematics",
-    "sourceRoot": "src",
-    "projects": {
-      "shared": {
-        "type": "library",
-        "root": "libs/shared",
-        "entryFile": "index",
-        "sourceRoot": "libs/shared/src",
-        "compilerOptions": {
-          "tsConfigPath": "libs/shared/tsconfig.lib.json"
-        }
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "projects": {
+    "shared": {
+      "type": "library",
+      "root": "libs/shared",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared/tsconfig.lib.json"
+      }
     },
     "compilerOptions": {
       "webpack": true,
       "plugins": [
         "@nestjs/swagger/plugin"
       ]
+    },
+    "user": {
+      "type": "library",
+      "root": "libs/user",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/tsconfig.lib.json"
+      }
     }
+  },
+  "compilerOptions": {
+    "webpack": true
   }
 }
