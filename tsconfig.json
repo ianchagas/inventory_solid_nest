@@ -56,6 +56,12 @@
       ],
       "@category/category/*": [
         "libs/category/src/*"
+      ],
+      "@deposit/deposit": [
+        "libs/deposit/src"
+      ],
+      "@deposit/deposit/*": [
+        "libs/deposit/src/*"
       ]
     }
   }

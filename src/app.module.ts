@@ -3,6 +3,7 @@ import { CategoryModule } from 'libs/category/src';
 import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
 import { getMetadataArgsStorage } from 'typeorm';
 
+import { DepositModule } from '@deposit/deposit';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
@@ -17,6 +18,7 @@ import { UserModule } from '@user/user';
     AddressModule,
     UnitOfMeasurementModule,
     CategoryModule,
+    DepositModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,

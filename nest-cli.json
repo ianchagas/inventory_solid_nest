@@ -61,6 +61,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/category/tsconfig.lib.json"
       }
+    },
+    "deposit": {
+      "type": "library",
+      "root": "libs/deposit",
+      "entryFile": "index",
+      "sourceRoot": "libs/deposit/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/deposit/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {

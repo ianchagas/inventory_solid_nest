@@ -22,6 +22,8 @@
     "@unit_of_measurement/unit-of-measurement/(.*)": "<rootDir>/../libs/unit-of-measurement/src/$1",
     "@unit_of_measurement/unit-of-measurement": "<rootDir>/../libs/unit-of-measurement/src",
     "@category/category/(.*)": "<rootDir>/../libs/category/src/$1",
-    "@category/category": "<rootDir>/../libs/category/src"
+    "@category/category": "<rootDir>/../libs/category/src",
+    "@deposit/deposit/(.*)": "<rootDir>/../libs/deposit/src/$1",
+    "@deposit/deposit": "<rootDir>/../libs/deposit/src"
   }
 }
