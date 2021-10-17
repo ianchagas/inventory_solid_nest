@@ -14,6 +14,12 @@
     "@shared/shared/(.*)": "<rootDir>/../libs/shared/src/$1",
     "@shared/shared": "<rootDir>/../libs/shared/src",
     "@user/user/(.*)": "<rootDir>/../libs/user/src/$1",
-    "@user/user": "<rootDir>/../libs/user/src"
+    "@user/user": "<rootDir>/../libs/user/src",
+    "@people/people/(.*)": "<rootDir>/../libs/people/src/$1",
+    "@people/people": "<rootDir>/../libs/people/src",
+    "@address/address/(.*)": "<rootDir>/../libs/address/src/$1",
+    "@address/address": "<rootDir>/../libs/address/src",
+    "@unit_of_measurement/unit-of-measurement/(.*)": "<rootDir>/../libs/unit-of-measurement/src/$1",
+    "@unit_of_measurement/unit-of-measurement": "<rootDir>/../libs/unit-of-measurement/src"
   }
 }

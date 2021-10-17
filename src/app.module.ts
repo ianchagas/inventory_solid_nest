@@ -1,14 +1,20 @@
+import { AddressModule } from 'libs/address/src';
+import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
 import { getMetadataArgsStorage } from 'typeorm';
 
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { PeopleModule } from '@people/people';
 import { UserModule } from '@user/user';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     UserModule,
+    PeopleModule,
+    AddressModule,
+    UnitOfMeasurementModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,

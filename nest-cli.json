@@ -25,6 +25,33 @@
       "compilerOptions": {
         "tsConfigPath": "libs/user/tsconfig.lib.json"
       }
+    },
+    "people": {
+      "type": "library",
+      "root": "libs/people",
+      "entryFile": "index",
+      "sourceRoot": "libs/people/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/people/tsconfig.lib.json"
+      }
+    },
+    "address": {
+      "type": "library",
+      "root": "libs/address",
+      "entryFile": "index",
+      "sourceRoot": "libs/address/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/address/tsconfig.lib.json"
+      }
+    },
+    "unit-of-measurement": {
+      "type": "library",
+      "root": "libs/unit-of-measurement",
+      "entryFile": "index",
+      "sourceRoot": "libs/unit-of-measurement/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/unit-of-measurement/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {

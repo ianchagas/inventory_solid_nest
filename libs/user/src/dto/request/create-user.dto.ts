@@ -1,10 +1,4 @@
-import {
-  IsBoolean,
-  IsEmail,
-  IsOptional,
-  IsString,
-  IsUUID,
-} from 'class-validator';
+import { IsBoolean, IsEmail, IsOptional, IsUUID } from 'class-validator';
 
 import { IsNotBlank } from '@shared/shared/decorators/is-not-blank.decorator';
 
@@ -16,7 +10,6 @@ class CreateUserDTO {
   @IsUUID()
   uuid?: string;
 
-  @IsString()
   @IsNotBlank('name', {
     message: 'Campo "name" não pode ser null ou vazio.',
   })
@@ -34,7 +27,6 @@ class CreateUserDTO {
   @IsNotBlank('password', {
     message: 'Campo "password" não pode ser null ou vazio.',
   })
-  @IsString()
   password: string;
 }
 

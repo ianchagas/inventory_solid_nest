@@ -32,6 +32,24 @@
       ],
       "@user/user/*": [
         "libs/user/src/*"
+      ],
+      "@people/people": [
+        "libs/people/src"
+      ],
+      "@people/people/*": [
+        "libs/people/src/*"
+      ],
+      "@address/address": [
+        "libs/address/src"
+      ],
+      "@address/address/*": [
+        "libs/address/src/*"
+      ],
+      "@unit_of_measurement/unit-of-measurement": [
+        "libs/unit-of-measurement/src"
+      ],
+      "@unit_of_measurement/unit-of-measurement/*": [
+        "libs/unit-of-measurement/src/*"
       ]
     }
   }

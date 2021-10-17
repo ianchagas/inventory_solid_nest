@@ -1,3 +1,5 @@
+import { hash } from 'bcryptjs';
+
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDTO } from '@user/user/dto/request/create-user.dto';
 import { IUserRepository } from '@user/user/implementations/user.interface';
@@ -12,6 +14,7 @@ export class CreateUserService {
   ) {}
 
   async execute(createUserDTO: CreateUserDTO): Promise<UserEntity> {
+    await hash(createUserDTO.password, 8);
     const CreateUser = await this.userRepository.create(createUserDTO);
 
     return CreateUser;
