@@ -104,7 +104,8 @@
       "^@user/user(|/.*)$": "<rootDir>/libs/user/src/$1",
       "^@people/people(|/.*)$": "<rootDir>/libs/people/src/$1",
       "^@address/address(|/.*)$": "<rootDir>/libs/address/src/$1",
-      "^@unit_of_measurement/unit-of-measurement(|/.*)$": "<rootDir>/libs/unit-of-measurement/src/$1"
+      "^@unit_of_measurement/unit-of-measurement(|/.*)$": "<rootDir>/libs/unit-of-measurement/src/$1",
+      "^@category/category(|/.*)$": "<rootDir>/libs/category/src/$1"
     }
   }
 }

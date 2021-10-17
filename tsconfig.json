@@ -50,6 +50,12 @@
       ],
       "@unit_of_measurement/unit-of-measurement/*": [
         "libs/unit-of-measurement/src/*"
+      ],
+      "@category/category": [
+        "libs/category/src"
+      ],
+      "@category/category/*": [
+        "libs/category/src/*"
       ]
     }
   }

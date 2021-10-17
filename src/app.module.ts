@@ -1,4 +1,5 @@
 import { AddressModule } from 'libs/address/src';
+import { CategoryModule } from 'libs/category/src';
 import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
 import { getMetadataArgsStorage } from 'typeorm';
 
@@ -15,6 +16,7 @@ import { UserModule } from '@user/user';
     PeopleModule,
     AddressModule,
     UnitOfMeasurementModule,
+    CategoryModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,
