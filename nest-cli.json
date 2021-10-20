@@ -70,6 +70,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/deposit/tsconfig.lib.json"
       }
+    },
+    "product": {
+      "type": "library",
+      "root": "libs/product",
+      "entryFile": "index",
+      "sourceRoot": "libs/product/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/product/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {

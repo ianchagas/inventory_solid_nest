@@ -24,6 +24,8 @@
     "@category/category/(.*)": "<rootDir>/../libs/category/src/$1",
     "@category/category": "<rootDir>/../libs/category/src",
     "@deposit/deposit/(.*)": "<rootDir>/../libs/deposit/src/$1",
-    "@deposit/deposit": "<rootDir>/../libs/deposit/src"
+    "@deposit/deposit": "<rootDir>/../libs/deposit/src",
+    "@product/product/(.*)": "<rootDir>/../libs/product/src/$1",
+    "@product/product": "<rootDir>/../libs/product/src"
   }
 }

@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
 
 import { CategoryEntity } from './infra/typeORM/entities/category.entity';
 import { CategoryRepository } from './infra/typeORM/repositories/category.repository';
@@ -23,7 +24,7 @@ import { UpdateCategoryService } from './useCase/updateCategory/update-category.
     FindCategoryByQueryController,
   ],
   exports: [],
-  imports: [TypeOrmModule.forFeature([CategoryEntity])],
+  imports: [TypeOrmModule.forFeature([CategoryEntity, ProductEntity])],
   providers: [
     CreateCategoryService,
     UpdateCategoryService,

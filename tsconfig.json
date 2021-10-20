@@ -62,6 +62,12 @@
       ],
       "@deposit/deposit/*": [
         "libs/deposit/src/*"
+      ],
+      "@product/product": [
+        "libs/product/src"
+      ],
+      "@product/product/*": [
+        "libs/product/src/*"
       ]
     }
   }

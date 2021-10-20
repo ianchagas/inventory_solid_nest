@@ -20,7 +20,7 @@ export class Product1634477370061 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           { name: 'code', type: 'varchar' },
-          { name: 'ean', type: 'int' },
+          { name: 'ean', type: 'bigint' },
           { name: 'name', type: 'varchar' },
           { name: 'id_people', type: 'int', isNullable: true },
           { name: 'id_category', type: 'int', isNullable: true },

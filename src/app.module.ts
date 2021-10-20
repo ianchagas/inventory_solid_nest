@@ -8,6 +8,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { PeopleModule } from '@people/people';
+import { ProductModule } from '@product/product';
 import { UserModule } from '@user/user';
 
 @Module({
@@ -19,6 +20,7 @@ import { UserModule } from '@user/user';
     UnitOfMeasurementModule,
     CategoryModule,
     DepositModule,
+    ProductModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,
