@@ -3,7 +3,7 @@ version: "3.7"
 services:
   database:
     image: postgres
-    container_name: melanzaneDB
+    container_name: MelanzaneDB
     restart: always
     ports:
       - 5434:5432
@@ -13,6 +13,19 @@ services:
       - POSTGRES_DB=melanzane
     volumes:
       - pgdata:/data/postgres
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: MelanzaneApp
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
 volumes:
   pgdata:
     driver: local
