@@ -8,7 +8,7 @@ import {
 
 import { IsNotBlank } from '@shared/shared/decorators/is-not-blank.decorator';
 
-class ProductDTO {
+class UpdateProductDTO {
   @IsOptional()
   id?: number;
 
@@ -24,13 +24,13 @@ class ProductDTO {
 
   @IsNumber()
   @IsNotEmpty()
-  ean: number;
+  ean?: number;
 
   @IsString()
   @IsNotBlank('name', {
     message: 'Campo "name" não pode ser null ou vazio.',
   })
-  name: string;
+  name?: string;
 
   @IsOptional()
   id_people?: number;
@@ -40,11 +40,11 @@ class ProductDTO {
 
   @IsNotEmpty()
   @IsNumber()
-  id_unit_of_measurement: number;
+  id_unit_of_measurement?: number;
 
   @IsNotEmpty()
   @IsNumber()
-  id_deposit: number;
+  id_deposit?: number;
 }
 
-export { ProductDTO };
+export { UpdateProductDTO };
