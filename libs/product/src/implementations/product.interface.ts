@@ -12,6 +12,14 @@ interface IProductRepository {
 
   findByUUID(uuid: string): Promise<ProductEntity>;
 
+  findByCategoryId(id_category: number): Promise<ProductEntity>;
+
+  findByPeopleId(id_people: number): Promise<ProductEntity>;
+
+  findByDepositId(id_deposit: number): Promise<ProductEntity>;
+
+  findByUnId(id_unit_of_measurement: number): Promise<ProductEntity>;
+
   findByCode(code: string): Promise<ProductEntity>;
 
   findByEan(ean: number): Promise<ProductEntity>;
