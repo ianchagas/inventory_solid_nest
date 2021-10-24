@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsString,
   IsUUID,
+  Length,
 } from 'class-validator';
 
 import { IsNotBlank } from '@shared/shared/decorators/is-not-blank.decorator';
@@ -24,6 +25,7 @@ class ProductDTO {
 
   @IsNumber()
   @IsNotEmpty()
+  @Length(13)
   ean?: number;
 
   @IsString()

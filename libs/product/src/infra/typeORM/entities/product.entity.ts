@@ -33,25 +33,25 @@ class ProductEntity {
 
   @OneToOne(() => PeopleEntity)
   @JoinColumn({ name: 'id_people' })
-  people_entity: PeopleEntity;
+  people: PeopleEntity;
   @Column()
   id_people: number;
 
   @OneToOne(() => CategoryEntity)
   @JoinColumn({ name: 'id_category' })
-  category_entity: CategoryEntity;
+  category: CategoryEntity;
   @Column()
   id_category: number;
 
   @OneToOne(() => UnitOfMeasurementEntity)
   @JoinColumn({ name: 'id_unit_of_measurement' })
-  unit_of_measurement_entity: UnitOfMeasurementEntity;
+  unit_of_measurement: UnitOfMeasurementEntity;
   @Column()
   id_unit_of_measurement: number;
 
   @OneToOne(() => DepositEntity)
   @JoinColumn({ name: 'id_deposit' })
-  deposit_entity: DepositEntity;
+  deposit: DepositEntity;
   @Column()
   id_deposit: number;
 

@@ -17,6 +17,8 @@ import { DeleteProductController } from './useCase/deleteProduct/delete-product.
 import { DeleteProductService } from './useCase/deleteProduct/delete-product.service';
 import { FindAllProductController } from './useCase/findAllProduct/find-all-product.controller';
 import { FindAllProductService } from './useCase/findAllProduct/find-all-product.service';
+import { FindProductByQueryController } from './useCase/findProductByQuery/find-product-by-query.controller';
+import { FindProductByQueryService } from './useCase/findProductByQuery/find-product-by-query.service';
 import { UpdateProductController } from './useCase/updateProduct/update-product.controller';
 import { UpdateProductService } from './useCase/updateProduct/update-product.service';
 
@@ -26,6 +28,7 @@ import { UpdateProductService } from './useCase/updateProduct/update-product.ser
     UpdateProductController,
     DeleteProductController,
     FindAllProductController,
+    FindProductByQueryController,
   ],
   exports: [],
   imports: [
@@ -42,6 +45,7 @@ import { UpdateProductService } from './useCase/updateProduct/update-product.ser
     UpdateProductService,
     DeleteProductService,
     FindAllProductService,
+    FindProductByQueryService,
     ProductRepository,
     DepositRepository,
     UnitOfMeasurementRepository,
