@@ -106,6 +106,11 @@ class CategoryRepository implements ICategoryRepository {
       throw new BadRequestException('Parametro passado é inválido');
     }
   }
+
+  async findById(id: number): Promise<CategoryEntity> {
+    const FindCategoryById = this.categoryRepository.findOne(id);
+    return FindCategoryById;
+  }
 }
 
 export { CategoryRepository };

@@ -24,7 +24,7 @@ class ProductDTO {
 
   @IsNumber()
   @IsNotEmpty()
-  ean: number;
+  ean?: number;
 
   @IsString()
   @IsNotBlank('name', {
@@ -33,8 +33,10 @@ class ProductDTO {
   name: string;
 
   @IsOptional()
+  @IsNumber()
   id_people?: number;
 
+  @IsNumber()
   @IsOptional()
   id_category?: number;
 

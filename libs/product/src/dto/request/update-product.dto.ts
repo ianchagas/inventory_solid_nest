@@ -16,16 +16,19 @@ class UpdateProductDTO {
   @IsUUID()
   uuid?: string;
 
+  @IsOptional()
   @IsString()
   @IsNotBlank('code', {
     message: 'Campo "code" não pode ser null ou vazio.',
   })
   code?: string;
 
+  @IsOptional()
   @IsNumber()
   @IsNotEmpty()
   ean?: number;
 
+  @IsOptional()
   @IsString()
   @IsNotBlank('name', {
     message: 'Campo "name" não pode ser null ou vazio.',
@@ -33,15 +36,19 @@ class UpdateProductDTO {
   name?: string;
 
   @IsOptional()
+  @IsOptional()
   id_people?: number;
 
   @IsOptional()
+  @IsOptional()
   id_category?: number;
 
+  @IsOptional()
   @IsNotEmpty()
   @IsNumber()
   id_unit_of_measurement?: number;
 
+  @IsOptional()
   @IsNotEmpty()
   @IsNumber()
   id_deposit?: number;

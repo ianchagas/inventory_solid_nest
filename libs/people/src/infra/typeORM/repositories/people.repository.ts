@@ -258,6 +258,11 @@ class PeopleRepository implements IPeopleRepository {
       throw new BadRequestException('Parametro passado é inválido');
     }
   }
+
+  async findById(id: number): Promise<PeopleEntity> {
+    const FindPeopleById = this.peopleRepository.findOne(id);
+    return FindPeopleById;
+  }
 }
 
 export { PeopleRepository };

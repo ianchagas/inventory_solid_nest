@@ -106,6 +106,11 @@ class DepositRepository implements IDepositRepository {
       throw new BadRequestException('Parametro passado é inválido');
     }
   }
+
+  async findById(id: number): Promise<DepositEntity> {
+    const FindDepositById = this.depositRepository.findOne(id);
+    return FindDepositById;
+  }
 }
 
 export { DepositRepository };

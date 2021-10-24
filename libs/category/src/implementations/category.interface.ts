@@ -11,6 +11,7 @@ interface ICategoryRepository {
   delete(id: number): Promise<void>;
   findAll(): Promise<CategoryEntity[]>;
   findCategoryByQuery(data: QueryCategoryDTO): Promise<CategoryEntity[]>;
+  findById(id: number): Promise<CategoryEntity>;
 }
 
 export { ICategoryRepository };

@@ -21,6 +21,8 @@ interface IPeopleRepository {
   findPeopleByQuery(data: QueryPeopleDTO): Promise<PeopleEntity[]>;
 
   findPeopleByQueryWithAddress(data: QueryPeopleDTO): Promise<PeopleEntity[]>;
+
+  findById(id: number): Promise<PeopleEntity>;
 }
 
 export { IPeopleRepository };

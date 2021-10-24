@@ -16,6 +16,8 @@ interface IUnitOfMeasurementRepository {
   findAll(): Promise<UnitOfMeasurementEntity[]>;
 
   findUnByQuery(data: QueryUnDTO): Promise<UnitOfMeasurementEntity[]>;
+
+  findById(id: number): Promise<UnitOfMeasurementEntity>;
 }
 
 export { IUnitOfMeasurementRepository };

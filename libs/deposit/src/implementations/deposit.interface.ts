@@ -11,6 +11,7 @@ interface IDepositRepository {
   delete(id: number): Promise<void>;
   findAll(): Promise<DepositEntity[]>;
   findDepositByQuery(data: QueryDepositDTO): Promise<DepositEntity[]>;
+  findById(id: number): Promise<DepositEntity>;
 }
 
 export { IDepositRepository };
