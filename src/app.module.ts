@@ -1,5 +1,6 @@
 import { AddressModule } from 'libs/address/src';
 import { CategoryModule } from 'libs/category/src';
+import { InventoryModule } from 'libs/inventory/src';
 import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
 import { getMetadataArgsStorage } from 'typeorm';
 
@@ -21,6 +22,7 @@ import { UserModule } from '@user/user';
     CategoryModule,
     DepositModule,
     ProductModule,
+    InventoryModule,
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
       host: process.env.TYPEORM_HOST,

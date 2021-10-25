@@ -26,6 +26,8 @@
     "@deposit/deposit/(.*)": "<rootDir>/../libs/deposit/src/$1",
     "@deposit/deposit": "<rootDir>/../libs/deposit/src",
     "@product/product/(.*)": "<rootDir>/../libs/product/src/$1",
-    "@product/product": "<rootDir>/../libs/product/src"
+    "@product/product": "<rootDir>/../libs/product/src",
+    "@inventory/inventory/(.*)": "<rootDir>/../libs/inventory/src/$1",
+    "@inventory/inventory": "<rootDir>/../libs/inventory/src"
   }
 }

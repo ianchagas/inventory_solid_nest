@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
+import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 
 import { UnitOfMeasurementEntity } from './infra/typeORM/entities/unit-of-measurement.entity';
 import { UnitOfMeasurementRepository } from './infra/typeORM/repositories/unit-of-measurement.repository';
@@ -23,7 +25,7 @@ import { UpdateUnService } from './useCase/updateUn/update-un.service';
     FindUnByQueryController,
   ],
   exports: [],
-  imports: [TypeOrmModule.forFeature([UnitOfMeasurementEntity])],
+  imports: [TypeOrmModule.forFeature([UnitOfMeasurementEntity, ProductEntity])],
   providers: [
     CreateUnService,
     UpdateUnService,
@@ -31,6 +33,7 @@ import { UpdateUnService } from './useCase/updateUn/update-un.service';
     FindAllUnService,
     FindUnByQueryService,
     UnitOfMeasurementRepository,
+    ProductRepository,
   ],
 })
 export class UnitOfMeasurementModule {}

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
+import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 
 import { CategoryEntity } from './infra/typeORM/entities/category.entity';
 import { CategoryRepository } from './infra/typeORM/repositories/category.repository';
@@ -32,6 +33,7 @@ import { UpdateCategoryService } from './useCase/updateCategory/update-category.
     FindAllCategoryService,
     FindCategoryByQueryService,
     CategoryRepository,
+    ProductRepository,
   ],
 })
 export class CategoryModule {}

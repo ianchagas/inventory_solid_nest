@@ -2,6 +2,8 @@ import { AddressEntity } from 'libs/address/src/infra/typeORM/entities/address.e
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
+import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 
 import { PeopleEntity } from './infra/typeORM/entities/people.entity';
 import { PeopleRepository } from './infra/typeORM/repositories/people.repository';
@@ -31,7 +33,9 @@ import { UpdatePeopleService } from './useCase/updatePeople/update-people.servic
     FindPeopleByQueryWithAddressController,
   ],
   exports: [],
-  imports: [TypeOrmModule.forFeature([PeopleEntity, AddressEntity])],
+  imports: [
+    TypeOrmModule.forFeature([PeopleEntity, AddressEntity, ProductEntity]),
+  ],
   providers: [
     CreatePeopleService,
     UpdatePeopleService,
@@ -41,6 +45,7 @@ import { UpdatePeopleService } from './useCase/updatePeople/update-people.servic
     FindPeopleByQueryService,
     FindPeopleByQueryWithAddressService,
     PeopleRepository,
+    ProductRepository,
   ],
 })
 export class PeopleModule {}

@@ -1,3 +1,5 @@
+import { InventoryRepository } from 'libs/inventory/src/infra/typeORM/repositories/inventory.repository';
+
 import { ICategoryRepository } from '@category/category/implementations/category.interface';
 import { CategoryRepository } from '@category/category/infra/typeORM/repositories/category.repository';
 import { IDepositRepository } from '@deposit/deposit/implementations/deposit.interface';
@@ -34,6 +36,8 @@ export class CreateProductService {
     private categoryRepository: ICategoryRepository,
     @Inject(PeopleRepository)
     private peopleRepository: IPeopleRepository,
+    @Inject(InventoryRepository)
+    private inventoryRepository: InventoryRepository,
   ) {}
 
   async execute({ createProductDTO }: IRequest): Promise<ProductEntity> {
@@ -99,6 +103,16 @@ export class CreateProductService {
       );
     }
 
-    return this.productRepository.create(createProductDTO);
+    const CreateNewProduct = await this.productRepository.create(
+      createProductDTO,
+    );
+
+    await this.inventoryRepository.initialMovementInCreateProduct({
+      id_product: CreateNewProduct.id,
+      quantity: 0,
+      cost_price: 0,
+    });
+
+    return CreateNewProduct;
   }
 }

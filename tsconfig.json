@@ -68,6 +68,12 @@
       ],
       "@product/product/*": [
         "libs/product/src/*"
+      ],
+      "@inventory/inventory": [
+        "libs/inventory/src"
+      ],
+      "@inventory/inventory/*": [
+        "libs/inventory/src/*"
       ]
     }
   }

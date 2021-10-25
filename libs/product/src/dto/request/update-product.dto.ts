@@ -25,9 +25,8 @@ class UpdateProductDTO {
   code?: string;
 
   @IsOptional()
-  @IsNumber()
   @IsNotEmpty()
-  @Length(13)
+  @IsNumber()
   ean?: number;
 
   @IsOptional()

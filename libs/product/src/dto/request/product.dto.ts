@@ -4,7 +4,6 @@ import {
   IsOptional,
   IsString,
   IsUUID,
-  Length,
 } from 'class-validator';
 
 import { IsNotBlank } from '@shared/shared/decorators/is-not-blank.decorator';
@@ -17,15 +16,15 @@ class ProductDTO {
   @IsUUID()
   uuid?: string;
 
+  @IsOptional()
   @IsString()
   @IsNotBlank('code', {
     message: 'Campo "code" não pode ser null ou vazio.',
   })
   code?: string;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  @Length(13)
   ean?: number;
 
   @IsString()

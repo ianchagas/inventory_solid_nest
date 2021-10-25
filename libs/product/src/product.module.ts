@@ -1,3 +1,6 @@
+import { InventoryEntity } from 'libs/inventory/src/infra/typeORM/entities/inventory.entity';
+import { InventoryRepository } from 'libs/inventory/src/infra/typeORM/repositories/inventory.repository';
+
 import { CategoryEntity } from '@category/category/infra/typeORM/entities/category.entity';
 import { CategoryRepository } from '@category/category/infra/typeORM/repositories/category.repository';
 import { DepositEntity } from '@deposit/deposit/infra/typeORM/entities/deposit.entity';
@@ -38,6 +41,7 @@ import { UpdateProductService } from './useCase/updateProduct/update-product.ser
       UnitOfMeasurementEntity,
       DepositEntity,
       CategoryEntity,
+      InventoryEntity,
     ]),
   ],
   providers: [
@@ -51,6 +55,7 @@ import { UpdateProductService } from './useCase/updateProduct/update-product.ser
     UnitOfMeasurementRepository,
     CategoryRepository,
     PeopleRepository,
+    InventoryRepository,
   ],
 })
 export class ProductModule {}

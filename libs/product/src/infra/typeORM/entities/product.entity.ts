@@ -7,6 +7,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ValueTransformer,
 } from 'typeorm';
 
 import { CategoryEntity } from '@category/category/infra/typeORM/entities/category.entity';

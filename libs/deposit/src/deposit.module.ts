@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
+import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 
 import { DepositEntity } from './infra/typeORM/entities/deposit.entity';
 import { DepositRepository } from './infra/typeORM/repositories/deposit.repository';
@@ -23,7 +25,7 @@ import { UpdateDepositService } from './useCase/updateDeposit/update-deposit.ser
     FindDepositByQueryController,
   ],
   exports: [],
-  imports: [TypeOrmModule.forFeature([DepositEntity])],
+  imports: [TypeOrmModule.forFeature([DepositEntity, ProductEntity])],
   providers: [
     CreateDepositService,
     UpdateDepositService,
@@ -31,6 +33,7 @@ import { UpdateDepositService } from './useCase/updateDeposit/update-deposit.ser
     FindAllDepositService,
     FindDepositByQueryService,
     DepositRepository,
+    ProductRepository,
   ],
 })
 export class DepositModule {}
