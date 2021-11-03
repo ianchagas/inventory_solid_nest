@@ -10,7 +10,7 @@ export class FindProductByQueryController {
   async handle(
     @Query('name') name: string,
     @Query('code') code: string,
-    @Query('ean') ean: number,
+    @Query('ean') ean: string,
   ): Promise<ProductEntity[]> {
     return this.findProductByQueryService.execute({
       name,

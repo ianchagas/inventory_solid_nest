@@ -1,10 +1,10 @@
 import {
+  IsBoolean,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
   IsUUID,
-  Length,
 } from 'class-validator';
 
 import { IsNotBlank } from '@shared/shared/decorators/is-not-blank.decorator';
@@ -26,8 +26,7 @@ class UpdateProductDTO {
 
   @IsOptional()
   @IsNotEmpty()
-  @IsNumber()
-  ean?: number;
+  ean?: string;
 
   @IsOptional()
   @IsString()
@@ -35,6 +34,10 @@ class UpdateProductDTO {
     message: 'Campo "name" não pode ser null ou vazio.',
   })
   name?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  enable?: boolean;
 
   @IsOptional()
   @IsOptional()

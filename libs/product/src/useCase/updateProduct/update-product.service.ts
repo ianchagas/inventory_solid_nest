@@ -15,7 +15,6 @@ import { IPeopleRepository } from '@people/people/implementations/people.interfa
 import { PeopleRepository } from '@people/people/infra/typeORM/repositories/people.repository';
 import { UpdateProductDTO } from '@product/product/dto/request/update-product.dto';
 import { IProductRepository } from '@product/product/implementations/product.interface';
-import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 import { IUnitOfMeasurementRepository } from '@unit_of_measurement/unit-of-measurement/implementations/unit-of-measurement.interface';
 import { UnitOfMeasurementRepository } from '@unit_of_measurement/unit-of-measurement/infra/typeORM/repositories/unit-of-measurement.repository';
@@ -47,11 +46,13 @@ export class UpdateProductService {
       throw new NotFoundException('Produto não encontrado');
     }
 
-    updateProduct.uuid = FindProductByUUID.uuid;
+    const UpdateProduct = updateProduct;
 
-    if (updateProduct.id_deposit) {
+    UpdateProduct.uuid = FindProductByUUID.uuid;
+
+    if (UpdateProduct.id_deposit) {
       const DepositId = await this.depositRepository.findById(
-        updateProduct.id_deposit,
+        UpdateProduct.id_deposit,
       );
 
       if (!DepositId) {
@@ -59,9 +60,9 @@ export class UpdateProductService {
       }
     }
 
-    if (updateProduct.id_unit_of_measurement) {
+    if (UpdateProduct.id_unit_of_measurement) {
       const UnitOfMeasurementId = await this.unRepository.findById(
-        updateProduct.id_unit_of_measurement,
+        UpdateProduct.id_unit_of_measurement,
       );
 
       if (!UnitOfMeasurementId) {
@@ -69,9 +70,9 @@ export class UpdateProductService {
       }
     }
 
-    if (updateProduct.id_category) {
+    if (UpdateProduct.id_category) {
       const CategoryId = await this.categoryRepository.findById(
-        updateProduct.id_category,
+        UpdateProduct.id_category,
       );
 
       if (!CategoryId) {
@@ -79,18 +80,18 @@ export class UpdateProductService {
       }
     }
 
-    if (updateProduct.id_people) {
+    if (UpdateProduct.id_people) {
       const PeopleId = await this.peopleRepository.findById(
-        updateProduct.id_people,
+        UpdateProduct.id_people,
       );
       if (!PeopleId) {
         throw new NotFoundException('Pessoa/Fornecedor não existe');
       }
     }
 
-    if (updateProduct.name) {
+    if (UpdateProduct.name) {
       const ValidateName = await this.productRepository.findByName(
-        updateProduct.name,
+        UpdateProduct.name,
       );
       if (ValidateName) {
         throw new BadRequestException(
@@ -99,9 +100,9 @@ export class UpdateProductService {
       }
     }
 
-    if (updateProduct.code) {
+    if (UpdateProduct.code) {
       const ValidateCode = await this.productRepository.findByCode(
-        updateProduct.code,
+        UpdateProduct.code,
       );
       if (ValidateCode) {
         throw new BadRequestException(
@@ -110,9 +111,9 @@ export class UpdateProductService {
       }
     }
 
-    if (updateProduct.ean) {
+    if (UpdateProduct.ean) {
       const ValidateEan = await this.productRepository.findByEan(
-        updateProduct.ean,
+        UpdateProduct.ean,
       );
       if (ValidateEan) {
         throw new BadRequestException(
@@ -121,6 +122,6 @@ export class UpdateProductService {
       }
     }
 
-    return this.productRepository.update(updateProduct);
+    return this.productRepository.update(UpdateProduct);
   }
 }

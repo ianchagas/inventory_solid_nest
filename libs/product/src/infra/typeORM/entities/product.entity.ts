@@ -27,10 +27,13 @@ class ProductEntity {
   code: string;
 
   @Column()
-  ean: number;
+  ean: string;
 
   @Column()
   name: string;
+
+  @Column()
+  enable: boolean;
 
   @OneToOne(() => PeopleEntity)
   @JoinColumn({ name: 'id_people' })

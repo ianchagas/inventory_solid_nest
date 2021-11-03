@@ -22,7 +22,7 @@ interface IProductRepository {
 
   findByCode(code: string): Promise<ProductEntity>;
 
-  findByEan(ean: number): Promise<ProductEntity>;
+  findByEan(ean: string): Promise<ProductEntity>;
 
   findByName(name: string): Promise<ProductEntity>;
 

@@ -249,7 +249,9 @@ class PeopleRepository implements IPeopleRepository {
       }
 
       if (comments) {
-        FindWithQueryParams.where('people.comments = :comments', { comments });
+        FindWithQueryParams.where('people.comments like :comments', {
+          comments: `%${comments}%`,
+        });
       }
 
       const FilterPeoples = await FindWithQueryParams.getMany();

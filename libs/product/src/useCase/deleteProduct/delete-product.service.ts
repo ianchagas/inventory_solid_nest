@@ -12,10 +12,13 @@ export class DeleteProductService {
 
   async execute(uuid: string): Promise<void> {
     const ProductExists = await this.productRepository.findByUUID(uuid);
+
     if (!ProductExists) {
       throw new NotFoundException('Produto não existe');
     }
+
     const ProductId = ProductExists.id;
+
     return this.productRepository.delete(ProductId);
   }
 }

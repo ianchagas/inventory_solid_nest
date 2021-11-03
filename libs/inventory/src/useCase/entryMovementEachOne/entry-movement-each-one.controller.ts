@@ -9,10 +9,8 @@ export class EntryMovementEachOneController {
   constructor(
     private entryMovementEachOneService: EntryMovementEachOneService,
   ) {}
-  @Patch('/api/melanzane/inventory/entry-movement-each-one/:uuid')
-  async handle(
-    @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
-  ): Promise<InventoryEntity> {
-    return this.entryMovementEachOneService.execute(uuid);
+  @Patch('/api/melanzane/inventory/entry-movement-each-one/:ean')
+  async handle(@Param('ean') ean: string): Promise<InventoryEntity> {
+    return this.entryMovementEachOneService.execute(ean);
   }
 }

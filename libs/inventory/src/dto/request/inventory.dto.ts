@@ -19,7 +19,7 @@ class InventoryDTO {
   quantity: number;
 
   @IsNumber()
-  id_product: number;
+  id_product?: number;
 
   @IsOptional()
   @IsNumber({ maxDecimalPlaces: 2 })

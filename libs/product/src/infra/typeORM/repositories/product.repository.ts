@@ -22,7 +22,8 @@ class ProductRepository implements IProductRepository {
   ) {}
 
   async create(createProduct: ProductDTO): Promise<ProductEntity> {
-    const SaveProduct = await this.productRepository.save(createProduct);
+    const CreateProduct = this.productRepository.create(createProduct);
+    const SaveProduct = await this.productRepository.save(CreateProduct);
 
     return SaveProduct;
   }
@@ -77,8 +78,11 @@ class ProductRepository implements IProductRepository {
     return FindByCode;
   }
 
-  async findByEan(ean: number): Promise<ProductEntity> {
-    const FindByEan = await this.productRepository.findOne(ean);
+  async findByEan(ean: string): Promise<ProductEntity> {
+    const FindByEan = await this.productRepository
+      .createQueryBuilder('product')
+      .where('product.ean like :ean', { ean })
+      .getOne();
 
     return FindByEan;
   }
@@ -96,6 +100,7 @@ class ProductRepository implements IProductRepository {
     name,
     code,
     ean,
+    enable,
     id_deposit,
     id_unit_of_measurement,
     id_category,
@@ -105,6 +110,7 @@ class ProductRepository implements IProductRepository {
       name,
       code,
       ean,
+      enable,
       id_deposit,
       id_unit_of_measurement,
       id_category,
@@ -120,6 +126,7 @@ class ProductRepository implements IProductRepository {
         'name',
         'code',
         'ean',
+        'enable',
         'id_deposit',
         'id_unit_of_measurement',
         'id_category',
@@ -141,7 +148,9 @@ class ProductRepository implements IProductRepository {
         );
       }
     } catch (Error) {
-      throw new NotFoundException('Não é possível excluir. Produto não existe');
+      throw new BadRequestException(
+        'Não é possível excluir. Produto possui movimentações de estoque.',
+      );
     }
   }
 
@@ -149,7 +158,6 @@ class ProductRepository implements IProductRepository {
     const FindAll = await this.productRepository.find({
       relations: ['unit_of_measurement', 'deposit', 'category', 'people'],
     });
-    console.log(FindAll);
     return FindAll;
   }
 
@@ -168,19 +176,19 @@ class ProductRepository implements IProductRepository {
 
       if (name) {
         FindWithQueryParams.where('product.name like :name', {
-          name: `${name}`,
+          name: `%${name}%`,
         });
       }
 
       if (code) {
         FindWithQueryParams.where('product.code like :code', {
-          code: `${code}`,
+          code: `%${code}%`,
         });
       }
 
       if (ean) {
-        FindWithQueryParams.where('product.ean = :ean', {
-          ean,
+        FindWithQueryParams.where('product.ean like :ean', {
+          ean: `%${ean}%`,
         });
       }
 

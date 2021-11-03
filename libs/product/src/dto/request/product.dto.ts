@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -24,8 +25,8 @@ class ProductDTO {
   code?: string;
 
   @IsOptional()
-  @IsNumber()
-  ean?: number;
+  @IsString()
+  ean?: string;
 
   @IsString()
   @IsNotBlank('name', {

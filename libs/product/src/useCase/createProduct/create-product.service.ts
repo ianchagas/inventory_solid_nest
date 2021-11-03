@@ -36,40 +36,37 @@ export class CreateProductService {
     private categoryRepository: ICategoryRepository,
     @Inject(PeopleRepository)
     private peopleRepository: IPeopleRepository,
-    @Inject(InventoryRepository)
-    private inventoryRepository: InventoryRepository,
   ) {}
 
   async execute({ createProductDTO }: IRequest): Promise<ProductEntity> {
+    const CreateProd = createProductDTO;
     const DepositId = await this.depositRepository.findById(
-      createProductDTO.id_deposit,
+      CreateProd.id_deposit,
     );
-
     if (!DepositId) {
       throw new NotFoundException('Deposito não existe');
     }
 
     const UnitOfMeasurementId = await this.unRepository.findById(
-      createProductDTO.id_unit_of_measurement,
+      CreateProd.id_unit_of_measurement,
     );
 
     if (!UnitOfMeasurementId) {
       throw new NotFoundException('Unidade de Medida não existe');
     }
 
-    if (createProductDTO.id_category) {
+    if (CreateProd.id_category) {
       const CategoryId = await this.categoryRepository.findById(
-        createProductDTO.id_category,
+        CreateProd.id_category,
       );
-
       if (!CategoryId) {
         throw new NotFoundException('Categoria não existe');
       }
     }
 
-    if (createProductDTO.id_people) {
+    if (CreateProd.id_people) {
       const PeopleId = await this.peopleRepository.findById(
-        createProductDTO.id_people,
+        CreateProd.id_people,
       );
       if (!PeopleId) {
         throw new NotFoundException('Pessoa/Fornecedor não existe');
@@ -77,7 +74,7 @@ export class CreateProductService {
     }
 
     const ValidateName = await this.productRepository.findByName(
-      createProductDTO.name,
+      CreateProd.name,
     );
     if (ValidateName) {
       throw new BadRequestException(
@@ -86,7 +83,7 @@ export class CreateProductService {
     }
 
     const ValidateCode = await this.productRepository.findByCode(
-      createProductDTO.code,
+      CreateProd.code,
     );
     if (ValidateCode) {
       throw new BadRequestException(
@@ -94,24 +91,14 @@ export class CreateProductService {
       );
     }
 
-    const ValidateEan = await this.productRepository.findByEan(
-      createProductDTO.ean,
-    );
+    const ValidateEan = await this.productRepository.findByEan(CreateProd.ean);
     if (ValidateEan) {
       throw new BadRequestException(
         'Já existe um produto cadastrado com esse EAN',
       );
     }
 
-    const CreateNewProduct = await this.productRepository.create(
-      createProductDTO,
-    );
-
-    await this.inventoryRepository.initialMovementInCreateProduct({
-      id_product: CreateNewProduct.id,
-      quantity: 0,
-      cost_price: 0,
-    });
+    const CreateNewProduct = await this.productRepository.create(CreateProd);
 
     return CreateNewProduct;
   }

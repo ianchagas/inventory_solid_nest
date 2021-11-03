@@ -17,24 +17,19 @@ class InventoryRepository implements IInventoryRepository {
     private inventoryRepository: Repository<InventoryEntity>,
   ) {}
 
-  async initialMovementInCreateProduct({
-    id_product,
-    quantity,
-    cost_price,
-  }: InventoryDTO): Promise<InventoryEntity> {
-    const CreateInitialMovement = this.inventoryRepository.create({
-      id_product,
-      quantity,
-      cost_price,
-    });
-    const SaveInitialMovement = await this.inventoryRepository.save(
-      CreateInitialMovement,
-    );
+  async findActuallyQuantity(id_product: number): Promise<number | undefined> {
+    const FindActuallyQuantity = await this.inventoryRepository
+      .createQueryBuilder('inventory')
+      .select('quantity')
+      .where({ id_product })
+      .getRawOne();
 
-    return SaveInitialMovement;
+    return FindActuallyQuantity;
   }
+
   async entryMovementEachOne(data: InventoryDTO): Promise<InventoryEntity> {
-    return;
+    const SaveEntryMovementEachOne = await this.inventoryRepository.save(data);
+    return SaveEntryMovementEachOne;
   }
 }
 
