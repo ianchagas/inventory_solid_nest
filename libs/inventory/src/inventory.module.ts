@@ -5,18 +5,37 @@ import { ProductRepository } from '@product/product/infra/typeORM/repositories/p
 
 import { InventoryEntity } from './infra/typeORM/entities/inventory.entity';
 import { InventoryRepository } from './infra/typeORM/repositories/inventory.repository';
+import { AdjustmentMovementController } from './useCase/adjustmentMovement/adjustment-movement.controller';
+import { AdjustmentMovementService } from './useCase/adjustmentMovement/adjustment-movement.service';
 import { EntryMovementController } from './useCase/entryMovement/entry-movement.controller';
 import { EntryMovementService } from './useCase/entryMovement/entry-movement.service';
 import { EntryMovementEachOneController } from './useCase/entryMovementEachOne/entry-movement-each-one.controller';
 import { EntryMovementEachOneService } from './useCase/entryMovementEachOne/entry-movement-each-one.service';
+import { ExitMovementController } from './useCase/exitMovement/exit-movement.controller';
+import { ExitMovementService } from './useCase/exitMovement/exit.movement.service';
+import { ExitMovementEachOneController } from './useCase/exitMovementEachOne/exit-movement-each-one.controller';
+import { ExitMovementEachOneService } from './useCase/exitMovementEachOne/exit-movement-each-one.service';
+import { UpdateCostPriceController } from './useCase/updateCostPrice/update-cost-price.controller';
+import { UpdateCostPriceService } from './useCase/updateCostPrice/update-cost-price.service';
 
 @Module({
-  controllers: [EntryMovementEachOneController, EntryMovementController],
+  controllers: [
+    AdjustmentMovementController,
+    EntryMovementController,
+    EntryMovementEachOneController,
+    ExitMovementController,
+    ExitMovementEachOneController,
+    UpdateCostPriceController,
+  ],
   exports: [],
   imports: [TypeOrmModule.forFeature([InventoryEntity, ProductEntity])],
   providers: [
-    EntryMovementEachOneService,
+    AdjustmentMovementService,
     EntryMovementService,
+    EntryMovementEachOneService,
+    ExitMovementService,
+    ExitMovementEachOneService,
+    UpdateCostPriceService,
     InventoryRepository,
     ProductRepository,
   ],
