@@ -23,7 +23,7 @@ export class ExitMovementEachOneService {
     const ProductExists = await this.productRepository.findByEan(ean);
 
     if (!ProductExists) {
-      throw new NotFoundException('Produto não existe');
+      throw new NotFoundException('Produto não existe.');
     }
 
     if (ProductExists.enable === false) {
@@ -32,6 +32,27 @@ export class ExitMovementEachOneService {
       );
     }
 
-    return;
+    const ProductId = ProductExists.id;
+
+    const FindActuallyQuantity =
+      await this.inventoryRepository.findActuallyQuantity(ProductId);
+
+    const TransformNumber = Object.values(FindActuallyQuantity)[0];
+
+    if (TransformNumber === 0) {
+      throw new BadRequestException(
+        'Estoque já consta como zerado, não é possível retirar mais nenhuma quantidade.',
+      );
+    }
+
+    const SubtractQuantity = TransformNumber - 1;
+
+    const ExitMovementEachOne =
+      await this.inventoryRepository.updateExitMovementEachOne(
+        ProductId,
+        SubtractQuantity,
+      );
+
+    return ExitMovementEachOne;
   }
 }

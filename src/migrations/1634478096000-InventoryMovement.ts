@@ -22,6 +22,7 @@ export class InventoryMovement1634478096000 implements MigrationInterface {
           { name: 'entry_movement_quantity', type: 'int', isNullable: true },
           { name: 'exit_movement_quantity', type: 'int', isNullable: true },
           { name: 'cost_price_movement', type: 'decimal', isNullable: true },
+          { name: 'comments', type: 'varchar', isNullable: true },
           {
             name: 'date_movement',
             type: 'timestamp with time zone',

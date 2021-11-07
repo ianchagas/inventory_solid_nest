@@ -77,6 +77,44 @@ class InventoryRepository implements IInventoryRepository {
 
     return Update;
   }
+
+  async updateExitMovementEachOne(
+    id_product: number,
+    quantity: number,
+  ): Promise<UpdateResult> {
+    const UpdateExitMovementEachOne = this.inventoryRepository.create({
+      quantity,
+    });
+
+    const Update = await this.inventoryRepository
+      .createQueryBuilder()
+      .update(UpdateExitMovementEachOne)
+      .where({ id_product })
+      .returning(['id_product', 'quantity'])
+      .execute();
+
+    return Update;
+  }
+
+  async updateExitMovement(
+    id_product: number,
+    quantity: number,
+    cost_price: number,
+  ): Promise<UpdateResult> {
+    const UpdateExitMovement = this.inventoryRepository.create({
+      quantity,
+      cost_price,
+    });
+
+    const Update = await this.inventoryRepository
+      .createQueryBuilder()
+      .update(UpdateExitMovement)
+      .where({ id_product })
+      .returning(['id_product', 'quantity', 'cost_price'])
+      .execute();
+
+    return Update;
+  }
 }
 
 export { InventoryRepository };

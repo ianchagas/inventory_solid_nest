@@ -17,6 +17,8 @@ import { ExitMovementEachOneController } from './useCase/exitMovementEachOne/exi
 import { ExitMovementEachOneService } from './useCase/exitMovementEachOne/exit-movement-each-one.service';
 import { UpdateCostPriceController } from './useCase/updateCostPrice/update-cost-price.controller';
 import { UpdateCostPriceService } from './useCase/updateCostPrice/update-cost-price.service';
+import { UpdateMinMaxQuantityController } from './useCase/updateMinMaxQuantity/update-min-max-quantity.controller';
+import { UpdateMinMaxQuantityService } from './useCase/updateMinMaxQuantity/update-min-max-quantity.service';
 
 @Module({
   controllers: [
@@ -26,6 +28,7 @@ import { UpdateCostPriceService } from './useCase/updateCostPrice/update-cost-pr
     ExitMovementController,
     ExitMovementEachOneController,
     UpdateCostPriceController,
+    UpdateMinMaxQuantityController,
   ],
   exports: [],
   imports: [TypeOrmModule.forFeature([InventoryEntity, ProductEntity])],
@@ -36,6 +39,7 @@ import { UpdateCostPriceService } from './useCase/updateCostPrice/update-cost-pr
     ExitMovementService,
     ExitMovementEachOneService,
     UpdateCostPriceService,
+    UpdateMinMaxQuantityService,
     InventoryRepository,
     ProductRepository,
   ],

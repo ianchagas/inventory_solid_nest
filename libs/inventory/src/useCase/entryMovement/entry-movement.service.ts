@@ -61,11 +61,11 @@ export class EntryMovementService {
 
     const Transform = Object.values(FindActuallyQuantity)[0];
 
-    const NewQuantity = entryMovement.quantity + Transform;
+    const SumQuantity = entryMovement.quantity + Transform;
 
     const EntryMovement = await this.inventoryRepository.updateEntryMovement(
       entryMovement.id_product,
-      NewQuantity,
+      SumQuantity,
       entryMovement.cost_price,
     );
 

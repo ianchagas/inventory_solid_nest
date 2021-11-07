@@ -16,6 +16,15 @@ interface IInventoryRepository {
     quantity: number,
     cost_price: number,
   ): Promise<UpdateResult>;
+  updateExitMovementEachOne(
+    id_product: number,
+    quantity: number,
+  ): Promise<UpdateResult>;
+  updateExitMovement(
+    id_product: number,
+    quantity: number,
+    cost_price: number,
+  ): Promise<UpdateResult>;
 }
 
 export { IInventoryRepository };

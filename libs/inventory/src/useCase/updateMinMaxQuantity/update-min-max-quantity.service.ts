@@ -15,10 +15,10 @@ import { InventoryRepository } from '../../infra/typeORM/repositories/inventory.
 
 interface IRequest {
   ean: string;
-  exitMovement: InventoryDTO;
+  cost_price: number;
 }
 
-export class ExitMovementService {
+export class UpdateMinMaxQuantityService {
   constructor(
     @Inject(InventoryRepository)
     private inventoryRepository: IInventoryRepository,
@@ -28,7 +28,7 @@ export class ExitMovementService {
 
   async execute({
     ean,
-    exitMovement,
+    cost_price,
   }: IRequest): Promise<InventoryEntity | UpdateResult> {
     const ProductExists = await this.productRepository.findByEan(ean);
 
@@ -42,35 +42,6 @@ export class ExitMovementService {
       );
     }
 
-    const ProductId = ProductExists.id;
-
-    exitMovement.id_product = ProductId;
-
-    const FindActuallyQuantity =
-      await this.inventoryRepository.findActuallyQuantity(ProductId);
-
-    const TransformNumber = Object.values(FindActuallyQuantity)[0];
-
-    if (TransformNumber === 0) {
-      throw new BadRequestException(
-        'Estoque já consta como zerado, não é possível retirar mais nenhuma quantidade.',
-      );
-    }
-
-    const SubtractQuantity = TransformNumber - exitMovement.quantity;
-
-    if (SubtractQuantity < 0) {
-      throw new BadRequestException(
-        'Quantidade informada irá deixar o estoque negativo. Não é possível efetuar a movimentação.',
-      );
-    }
-
-    const ExitMovement = await this.inventoryRepository.updateExitMovement(
-      exitMovement.id_product,
-      SubtractQuantity,
-      exitMovement.cost_price,
-    );
-
-    return ExitMovement;
+    return;
   }
 }

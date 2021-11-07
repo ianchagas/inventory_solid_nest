@@ -20,6 +20,14 @@ class InventoryDTO {
 
   @IsOptional()
   @IsNumber()
+  min_quantity?: number;
+
+  @IsOptional()
+  @IsNumber()
+  max_quantity?: number;
+
+  @IsOptional()
+  @IsNumber()
   id_product?: number;
 
   @IsOptional()

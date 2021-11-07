@@ -20,6 +20,8 @@ export class Inventory1634477989389 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           { name: 'quantity', type: 'int' },
+          { name: 'min_quantity', type: 'int', isNullable: true },
+          { name: 'max_quantity', type: 'int', isNullable: true },
           { name: 'cost_price', type: 'decimal', isNullable: true },
           { name: 'id_product', type: 'int' },
           {
