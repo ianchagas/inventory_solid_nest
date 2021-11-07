@@ -1,5 +1,6 @@
-import { Controller, Param, ParseUUIDPipe, Patch } from '@nestjs/common';
-import { uuidOptions } from '@shared/shared/pipes/uuid.config';
+import { UpdateResult } from 'typeorm';
+
+import { Controller, Param, Patch } from '@nestjs/common';
 
 import { InventoryEntity } from '../../infra/typeORM/entities/inventory.entity';
 import { EntryMovementEachOneService } from './entry-movement-each-one.service';
@@ -10,7 +11,9 @@ export class EntryMovementEachOneController {
     private entryMovementEachOneService: EntryMovementEachOneService,
   ) {}
   @Patch('/api/melanzane/inventory/entry-movement-each-one/:ean')
-  async handle(@Param('ean') ean: string): Promise<InventoryEntity> {
+  async handle(
+    @Param('ean') ean: string,
+  ): Promise<InventoryEntity | UpdateResult> {
     return this.entryMovementEachOneService.execute(ean);
   }
 }

@@ -18,6 +18,7 @@ class InventoryDTO {
   @IsNumber()
   quantity: number;
 
+  @IsOptional()
   @IsNumber()
   id_product?: number;
 
