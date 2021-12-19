@@ -59,6 +59,6 @@ export class EntryMovementEachOneService {
         SumQuantity,
       );
 
-    return EntryMovementEachOne;
+    return EntryMovementEachOne.raw;
   }
 }

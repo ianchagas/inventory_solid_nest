@@ -4,7 +4,7 @@
 /* eslint-disable no-useless-return */
 import { UpdateResult } from 'typeorm';
 
-import { InventoryDTO } from '@inventory/inventory/dto/request/inventory.dto';
+import { MinMaxQuantityDTO } from '@inventory/inventory/dto/request/min-max-quantity.dto';
 import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
@@ -15,7 +15,7 @@ import { InventoryRepository } from '../../infra/typeORM/repositories/inventory.
 
 interface IRequest {
   ean: string;
-  cost_price: number;
+  MinMaxQtde: MinMaxQuantityDTO;
 }
 
 export class UpdateMinMaxQuantityService {
@@ -28,7 +28,7 @@ export class UpdateMinMaxQuantityService {
 
   async execute({
     ean,
-    cost_price,
+    MinMaxQtde,
   }: IRequest): Promise<InventoryEntity | UpdateResult> {
     const ProductExists = await this.productRepository.findByEan(ean);
 
@@ -42,6 +42,24 @@ export class UpdateMinMaxQuantityService {
       );
     }
 
-    return;
+    const ProductId = ProductExists.id;
+
+    const FindMovementExists =
+      await this.inventoryRepository.findMovementExists(ProductId);
+
+    if (FindMovementExists.length === 0) {
+      throw new BadRequestException(
+        'Não existem registros de estoque para o produto, não é possível executar ação.',
+      );
+    }
+
+    const UpdateMinMaxQtde =
+      await this.inventoryRepository.updateMinMaxQuantity(
+        ProductId,
+        MinMaxQtde.min_quantity,
+        MinMaxQtde.max_quantity,
+      );
+
+    return UpdateMinMaxQtde.raw;
   }
 }

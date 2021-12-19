@@ -69,6 +69,6 @@ export class EntryMovementService {
       entryMovement.cost_price,
     );
 
-    return EntryMovement;
+    return EntryMovement.raw;
   }
 }

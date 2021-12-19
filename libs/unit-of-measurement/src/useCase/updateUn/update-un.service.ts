@@ -30,6 +30,7 @@ export class UpdateUnService {
 
     updateUnDTO.uuid = UnExists.uuid;
 
-    return this.unRepository.update(updateUnDTO);
+    const UpdateUn = await this.unRepository.update(updateUnDTO);
+    return UpdateUn.raw;
   }
 }

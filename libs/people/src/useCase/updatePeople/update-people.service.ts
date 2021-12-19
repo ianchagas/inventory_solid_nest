@@ -26,6 +26,7 @@ export class UpdatePeopleService {
 
     updatePeopleDTO.uuid = PeopleExists.uuid;
 
-    return this.peopleRepository.update(updatePeopleDTO);
+    const UpdatePeople = await this.peopleRepository.update(updatePeopleDTO);
+    return UpdatePeople.raw;
   }
 }

@@ -15,6 +15,10 @@ import { ExitMovementController } from './useCase/exitMovement/exit-movement.con
 import { ExitMovementService } from './useCase/exitMovement/exit.movement.service';
 import { ExitMovementEachOneController } from './useCase/exitMovementEachOne/exit-movement-each-one.controller';
 import { ExitMovementEachOneService } from './useCase/exitMovementEachOne/exit-movement-each-one.service';
+import { FindAllInventoryController } from './useCase/findAllInventory/find-all-inventory.controller';
+import { FindAllInventoryService } from './useCase/findAllInventory/find-all-inventory.service';
+import { FindInventoryByQueryController } from './useCase/findInventoryByQuery/find-inventory-by-query.controller';
+import { FindInventoryByQueryService } from './useCase/findInventoryByQuery/find-inventory-by-query.service';
 import { UpdateCostPriceController } from './useCase/updateCostPrice/update-cost-price.controller';
 import { UpdateCostPriceService } from './useCase/updateCostPrice/update-cost-price.service';
 import { UpdateMinMaxQuantityController } from './useCase/updateMinMaxQuantity/update-min-max-quantity.controller';
@@ -29,6 +33,8 @@ import { UpdateMinMaxQuantityService } from './useCase/updateMinMaxQuantity/upda
     ExitMovementEachOneController,
     UpdateCostPriceController,
     UpdateMinMaxQuantityController,
+    FindAllInventoryController,
+    FindInventoryByQueryController,
   ],
   exports: [],
   imports: [TypeOrmModule.forFeature([InventoryEntity, ProductEntity])],
@@ -40,6 +46,8 @@ import { UpdateMinMaxQuantityService } from './useCase/updateMinMaxQuantity/upda
     ExitMovementEachOneService,
     UpdateCostPriceService,
     UpdateMinMaxQuantityService,
+    FindAllInventoryService,
+    FindInventoryByQueryService,
     InventoryRepository,
     ProductRepository,
   ],

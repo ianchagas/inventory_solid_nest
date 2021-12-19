@@ -53,6 +53,6 @@ export class ExitMovementEachOneService {
         SubtractQuantity,
       );
 
-    return ExitMovementEachOne;
+    return ExitMovementEachOne.raw;
   }
 }

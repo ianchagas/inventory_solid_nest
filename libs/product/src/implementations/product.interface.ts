@@ -1,5 +1,7 @@
 import { UpdateResult } from 'typeorm';
 
+import { QueryInventoryDTO } from '@inventory/inventory/dto/request/query-inventory.dto';
+
 import { ProductDTO } from '../dto/request/product.dto';
 import { QueryProductDTO } from '../dto/request/query-product.dto';
 import { UpdateProductDTO } from '../dto/request/update-product.dto';
@@ -33,6 +35,10 @@ interface IProductRepository {
   findAll(): Promise<ProductEntity[]>;
 
   findByQuery(data: QueryProductDTO): Promise<ProductEntity[]>;
+
+  findAllWithInventory(): Promise<ProductEntity[]>;
+
+  findByQueryWithInventory(data: QueryInventoryDTO): Promise<ProductEntity[]>;
 }
 
 export { IProductRepository };

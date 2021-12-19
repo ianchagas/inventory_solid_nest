@@ -1,5 +1,6 @@
 import { UpdateResult } from 'typeorm';
 
+import { MinMaxQuantityDTO } from '@inventory/inventory/dto/request/min-max-quantity.dto';
 import { Body, Controller, Param, Put } from '@nestjs/common';
 
 import { InventoryEntity } from '../../infra/typeORM/entities/inventory.entity';
@@ -13,8 +14,8 @@ export class UpdateMinMaxQuantityController {
   @Put('/api/melanzane/inventory/update-min-max-quantity/:ean')
   async handle(
     @Param('ean') ean: string,
-    @Body() cost_price: number,
+    @Body() MinMaxQtde: MinMaxQuantityDTO,
   ): Promise<InventoryEntity | UpdateResult> {
-    return this.updateMinMaxQuantityService.execute({ ean, cost_price });
+    return this.updateMinMaxQuantityService.execute({ ean, MinMaxQtde });
   }
 }

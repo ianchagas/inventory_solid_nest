@@ -24,9 +24,16 @@ class InventoryEntity {
   @Column()
   cost_price: number;
 
-  @OneToOne(() => ProductEntity)
+  @Column()
+  min_quantity: number;
+
+  @Column()
+  max_quantity: number;
+
+  @OneToOne(() => ProductEntity, (product) => product.inventory)
   @JoinColumn({ name: 'id_product' })
   product: ProductEntity;
+
   @Column()
   id_product: number;
 

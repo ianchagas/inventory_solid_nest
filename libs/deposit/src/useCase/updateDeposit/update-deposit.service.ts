@@ -27,6 +27,7 @@ export class UpdateDepositService {
 
     updateDepositDTO.uuid = DepositExists.uuid;
 
-    return this.depositRepository.update(updateDepositDTO);
+    const UpdateDeposit = await this.depositRepository.update(updateDepositDTO);
+    return UpdateDeposit.raw;
   }
 }

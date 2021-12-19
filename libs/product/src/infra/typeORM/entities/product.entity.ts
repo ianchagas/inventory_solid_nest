@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  JoinTable,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -12,6 +13,7 @@ import {
 
 import { CategoryEntity } from '@category/category/infra/typeORM/entities/category.entity';
 import { DepositEntity } from '@deposit/deposit/infra/typeORM/entities/deposit.entity';
+import { InventoryEntity } from '@inventory/inventory/infra/typeORM/entities/inventory.entity';
 import { PeopleEntity } from '@people/people/infra/typeORM/entities/people.entity';
 import { UnitOfMeasurementEntity } from '@unit_of_measurement/unit-of-measurement/infra/typeORM/entities/unit-of-measurement.entity';
 
@@ -58,6 +60,10 @@ class ProductEntity {
   deposit: DepositEntity;
   @Column()
   id_deposit: number;
+
+  @OneToOne(() => InventoryEntity, (inventory) => inventory.product)
+  @JoinTable()
+  inventory: InventoryEntity;
 
   @CreateDateColumn()
   created_at: Date;

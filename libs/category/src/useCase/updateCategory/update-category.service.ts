@@ -29,7 +29,9 @@ export class UpdateCategoryService {
     }
 
     updateCategoryDTO.uuid = CategoryExists.uuid;
-
-    return this.categoryRepository.update(updateCategoryDTO);
+    const UpdateCategory = await this.categoryRepository.update(
+      updateCategoryDTO,
+    );
+    return UpdateCategory.raw;
   }
 }

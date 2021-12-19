@@ -122,6 +122,7 @@ export class UpdateProductService {
       }
     }
 
-    return this.productRepository.update(UpdateProduct);
+    const UpdatedProduct = await this.productRepository.update(UpdateProduct);
+    return UpdatedProduct.raw;
   }
 }

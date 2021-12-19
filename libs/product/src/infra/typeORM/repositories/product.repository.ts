@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-return */
 import { Repository, UpdateResult } from 'typeorm';
 
+import { QueryInventoryDTO } from '@inventory/inventory/dto/request/query-inventory.dto';
 import {
   BadRequestException,
   Injectable,
@@ -159,6 +160,59 @@ class ProductRepository implements IProductRepository {
       relations: ['unit_of_measurement', 'deposit', 'category', 'people'],
     });
     return FindAll;
+  }
+
+  async findAllWithInventory(): Promise<ProductEntity[]> {
+    const FindAllWithInventory = await this.productRepository
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.inventory', 'inventory')
+      .getMany();
+    return FindAllWithInventory;
+  }
+
+  async findByQueryWithInventory({
+    name,
+    code,
+    ean,
+    enable,
+    quantity,
+    cost_price,
+  }: QueryInventoryDTO): Promise<ProductEntity[]> {
+    try {
+      const FindByQueryWithInventory = this.productRepository
+        .createQueryBuilder('product')
+        .leftJoinAndSelect('product.inventory', 'inventory');
+
+      if (name) {
+        FindByQueryWithInventory.where('product.name like :name', {
+          name: `%${name}%`,
+        });
+      }
+
+      if (code) {
+        FindByQueryWithInventory.where('product.code like :code', {
+          code: `%${code}%`,
+        });
+      }
+
+      if (ean) {
+        FindByQueryWithInventory.where('product.ean like :ean', {
+          ean: `%${ean}%`,
+        });
+      }
+
+      if (enable) {
+        FindByQueryWithInventory.where('product.enable = :enable', {
+          enable,
+        });
+      }
+
+      const FilterProductWithInventory =
+        await FindByQueryWithInventory.getMany();
+      return FilterProductWithInventory;
+    } catch (Error) {
+      throw new BadRequestException('Parametro passado é inválido');
+    }
   }
 
   async findByQuery({

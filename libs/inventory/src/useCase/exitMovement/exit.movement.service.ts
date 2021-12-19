@@ -71,6 +71,6 @@ export class ExitMovementService {
       exitMovement.cost_price,
     );
 
-    return ExitMovement;
+    return ExitMovement.raw;
   }
 }

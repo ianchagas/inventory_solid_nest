@@ -28,7 +28,7 @@ export class UpdateAddressService {
       throw new NotFoundException('Entidade não encontrada');
     }
     updateAddressDTO.id_people = PeopleExists.id;
-
-    return this.addressRepository.update(updateAddressDTO);
+    const UpdateAddress = await this.addressRepository.update(updateAddressDTO);
+    return UpdateAddress.raw;
   }
 }

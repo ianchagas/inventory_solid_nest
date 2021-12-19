@@ -27,10 +27,12 @@ class InventoryRepository implements IInventoryRepository {
     return FindActuallyQuantity;
   }
 
-  async findMovementExists(id_product: number): Promise<InventoryEntity> {
-    const FindMovementExists = await this.inventoryRepository.findOne(
-      id_product,
-    );
+  async findMovementExists(id_product: number): Promise<InventoryEntity[]> {
+    const FindMovementExists = await this.inventoryRepository.find({
+      where: {
+        id_product,
+      },
+    });
 
     return FindMovementExists;
   }
@@ -111,6 +113,74 @@ class InventoryRepository implements IInventoryRepository {
       .update(UpdateExitMovement)
       .where({ id_product })
       .returning(['id_product', 'quantity', 'cost_price'])
+      .execute();
+
+    return Update;
+  }
+
+  async updateAdjustmentMovement(
+    id_product: number,
+    quantity: number,
+    cost_price: number,
+    max_quantity: number,
+    min_quantity: number,
+  ): Promise<UpdateResult> {
+    const UpdateAdjustmentMovement = this.inventoryRepository.create({
+      quantity,
+      cost_price,
+      max_quantity,
+      min_quantity,
+    });
+
+    const Update = await this.inventoryRepository
+      .createQueryBuilder()
+      .update(UpdateAdjustmentMovement)
+      .where({ id_product })
+      .returning([
+        'id_product',
+        'quantity',
+        'cost_price',
+        'max_quantity',
+        'min_quantity',
+      ])
+      .execute();
+
+    return Update;
+  }
+
+  async updateCostPrice(
+    id_product: number,
+    cost_price: number,
+  ): Promise<UpdateResult> {
+    const UpdateCostPrice = this.inventoryRepository.create({
+      cost_price,
+    });
+
+    const Update = await this.inventoryRepository
+      .createQueryBuilder()
+      .update(UpdateCostPrice)
+      .where({ id_product })
+      .returning(['id_product', 'cost_price'])
+      .execute();
+
+    return Update;
+  }
+
+  async updateMinMaxQuantity(
+    id_product: number,
+    min_quantity: number,
+    max_quantity: number,
+  ): Promise<UpdateResult> {
+    const UpdateMinMaxQuantity = this.inventoryRepository.create({
+      min_quantity,
+      max_quantity,
+    });
+
+    const Update = await this.inventoryRepository
+      .createQueryBuilder()
+      .update(UpdateMinMaxQuantity)
+      .where({ id_product })
+      .returning(['id_product', 'min_quantity', 'max_quantity'])
       .execute();
 
     return Update;

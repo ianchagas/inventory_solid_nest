@@ -42,6 +42,35 @@ export class AdjustmentMovementService {
       );
     }
 
-    return;
+    const ProductId = ProductExists.id;
+
+    adjustmentMovement.id_product = ProductId;
+
+    const FindActuallyQuantity =
+      await this.inventoryRepository.findActuallyQuantity(ProductId);
+
+    if (!FindActuallyQuantity) {
+      const AdjustmentMovement =
+        await this.inventoryRepository.createFirstMovement({
+          id_product: adjustmentMovement.id_product,
+          quantity: adjustmentMovement.quantity,
+          cost_price: adjustmentMovement.cost_price,
+          max_quantity: adjustmentMovement.max_quantity,
+          min_quantity: adjustmentMovement.min_quantity,
+        });
+
+      return AdjustmentMovement;
+    }
+
+    const AdjustmentMovement =
+      await this.inventoryRepository.updateAdjustmentMovement(
+        adjustmentMovement.id_product,
+        adjustmentMovement.quantity,
+        adjustmentMovement.cost_price,
+        adjustmentMovement.min_quantity,
+        adjustmentMovement.max_quantity,
+      );
+
+    return AdjustmentMovement.raw;
   }
 }
