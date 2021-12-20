@@ -1,7 +1,5 @@
 import { UpdateResult } from 'typeorm';
 
-import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
-
 import { InventoryDTO } from '../dto/request/inventory.dto';
 import { InventoryEntity } from '../infra/typeORM/entities/inventory.entity';
 

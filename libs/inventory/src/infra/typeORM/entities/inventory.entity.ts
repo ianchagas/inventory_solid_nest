@@ -3,12 +3,15 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  JoinTable,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
+
+import { InventoryMovementEntity } from './inventory-movement.entity';
 
 @Entity('inventory')
 class InventoryEntity {
@@ -33,6 +36,13 @@ class InventoryEntity {
   @OneToOne(() => ProductEntity, (product) => product.inventory)
   @JoinColumn({ name: 'id_product' })
   product: ProductEntity;
+
+  @OneToOne(
+    () => InventoryMovementEntity,
+    (inventorymovement) => inventorymovement.inventory,
+  )
+  @JoinTable()
+  inventory_movement: InventoryMovementEntity;
 
   @Column()
   id_product: number;
