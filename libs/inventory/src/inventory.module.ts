@@ -3,7 +3,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
 
+import { InventoryMovementEntity } from './infra/typeORM/entities/inventory-movement.entity';
 import { InventoryEntity } from './infra/typeORM/entities/inventory.entity';
+import { InventoryMovementRepository } from './infra/typeORM/repositories/inventory-movement.repository';
 import { InventoryRepository } from './infra/typeORM/repositories/inventory.repository';
 import { AdjustmentMovementController } from './useCase/adjustmentMovement/adjustment-movement.controller';
 import { AdjustmentMovementService } from './useCase/adjustmentMovement/adjustment-movement.service';
@@ -37,7 +39,13 @@ import { UpdateMinMaxQuantityService } from './useCase/updateMinMaxQuantity/upda
     FindInventoryByQueryController,
   ],
   exports: [],
-  imports: [TypeOrmModule.forFeature([InventoryEntity, ProductEntity])],
+  imports: [
+    TypeOrmModule.forFeature([
+      InventoryEntity,
+      InventoryMovementEntity,
+      ProductEntity,
+    ]),
+  ],
   providers: [
     AdjustmentMovementService,
     EntryMovementService,
@@ -50,6 +58,7 @@ import { UpdateMinMaxQuantityService } from './useCase/updateMinMaxQuantity/upda
     FindInventoryByQueryService,
     InventoryRepository,
     ProductRepository,
+    InventoryMovementRepository,
   ],
 })
 export class InventoryModule {}

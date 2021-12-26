@@ -5,6 +5,8 @@
 import { UpdateResult } from 'typeorm';
 
 import { InventoryDTO } from '@inventory/inventory/dto/request/inventory.dto';
+import { IInventoryMovementRepository } from '@inventory/inventory/implementations/inventory-movement.interface';
+import { InventoryMovementRepository } from '@inventory/inventory/infra/typeORM/repositories/inventory-movement.repository';
 import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
@@ -24,6 +26,8 @@ export class AdjustmentMovementService {
     private inventoryRepository: IInventoryRepository,
     @Inject(ProductRepository)
     private productRepository: IProductRepository,
+    @Inject(InventoryMovementRepository)
+    private inventoryMovementRepository: IInventoryMovementRepository,
   ) {}
 
   async execute({
