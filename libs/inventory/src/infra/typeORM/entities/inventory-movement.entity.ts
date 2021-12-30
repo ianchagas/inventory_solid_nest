@@ -18,13 +18,16 @@ class InventoryMovementEntity {
   uuid: string;
 
   @Column()
-  entry_movement_quantity: number;
+  actually_quantity: number;
 
   @Column()
-  exit_movement_quantity: number;
+  entry_amount_moved: number;
 
   @Column()
-  cost_price_movement: number;
+  exit_amount_moved: number;
+
+  @Column()
+  actually_cost_price: number;
 
   @Column()
   comments: string;

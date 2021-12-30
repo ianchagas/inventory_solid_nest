@@ -66,6 +66,8 @@ export class AdjustmentMovementService {
       return AdjustmentMovement;
     }
 
+    const Transform = Object.values(FindActuallyQuantity)[0];
+
     const AdjustmentMovement =
       await this.inventoryRepository.updateAdjustmentMovement(
         adjustmentMovement.id_product,
@@ -74,6 +76,30 @@ export class AdjustmentMovementService {
         adjustmentMovement.min_quantity,
         adjustmentMovement.max_quantity,
       );
+
+    const NewInventoryMovement = await this.inventoryRepository.findInventory(
+      ProductId,
+    );
+
+    if (adjustmentMovement.quantity > Transform) {
+      const EntryAmount = adjustmentMovement.quantity - Transform;
+      await this.inventoryMovementRepository.createInventoryMovement({
+        id_inventory: NewInventoryMovement.id,
+        entry_amount_moved: EntryAmount,
+        actually_quantity: NewInventoryMovement.quantity,
+        actually_cost_price: NewInventoryMovement.cost_price,
+      });
+    }
+
+    if (adjustmentMovement.quantity < Transform) {
+      const ExitAmount = Transform - adjustmentMovement.quantity;
+      await this.inventoryMovementRepository.createInventoryMovement({
+        id_inventory: NewInventoryMovement.id,
+        exit_amount_moved: ExitAmount,
+        actually_quantity: NewInventoryMovement.quantity,
+        actually_cost_price: NewInventoryMovement.cost_price,
+      });
+    }
 
     return AdjustmentMovement.raw;
   }

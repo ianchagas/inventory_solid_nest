@@ -18,11 +18,15 @@ class InventoryMovementDTO {
 
   @IsOptional()
   @IsNumber()
-  entry_movement_quantity?: number;
+  actually_quantity?: number;
 
   @IsOptional()
   @IsNumber()
-  exit_movement_quantity?: number;
+  entry_amount_moved?: number;
+
+  @IsOptional()
+  @IsNumber()
+  exit_amount_moved?: number;
 
   @IsOptional()
   @IsNumber()
@@ -33,7 +37,7 @@ class InventoryMovementDTO {
   @Min(0.01)
   @Max(999999999999999999.99)
   @IsPositive()
-  cost_price_movement?: number;
+  actually_cost_price?: number;
 
   @IsOptional()
   @IsString()

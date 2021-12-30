@@ -5,6 +5,7 @@ import { InventoryEntity } from '../infra/typeORM/entities/inventory.entity';
 
 interface IInventoryRepository {
   createFirstMovement(data: InventoryDTO): Promise<InventoryEntity>;
+  findInventory(id_product: number): Promise<InventoryEntity>;
   findActuallyQuantity(id_product: number): Promise<number | undefined>;
   findMovementExists(id_product: number): Promise<InventoryEntity[]>;
   updateEntryMovementEachOne(

@@ -27,6 +27,15 @@ class InventoryRepository implements IInventoryRepository {
     return FindActuallyQuantity;
   }
 
+  async findInventory(id_product: number): Promise<InventoryEntity> {
+    const FindInventory = await this.inventoryRepository.findOne({
+      where: {
+        id_product,
+      },
+    });
+    return FindInventory;
+  }
+
   async findMovementExists(id_product: number): Promise<InventoryEntity[]> {
     const FindMovementExists = await this.inventoryRepository.find({
       where: {

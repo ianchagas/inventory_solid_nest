@@ -5,6 +5,8 @@
 import { UpdateResult } from 'typeorm';
 
 import { InventoryDTO } from '@inventory/inventory/dto/request/inventory.dto';
+import { IInventoryMovementRepository } from '@inventory/inventory/implementations/inventory-movement.interface';
+import { InventoryMovementRepository } from '@inventory/inventory/infra/typeORM/repositories/inventory-movement.repository';
 import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
@@ -24,6 +26,8 @@ export class ExitMovementService {
     private inventoryRepository: IInventoryRepository,
     @Inject(ProductRepository)
     private productRepository: IProductRepository,
+    @Inject(InventoryMovementRepository)
+    private inventoryMovementRepository: IInventoryMovementRepository,
   ) {}
 
   async execute({
@@ -49,6 +53,12 @@ export class ExitMovementService {
     const FindActuallyQuantity =
       await this.inventoryRepository.findActuallyQuantity(ProductId);
 
+    if (!FindActuallyQuantity) {
+      throw new BadRequestException(
+        'Estoque desse produto ainda não possui moviventações, não é possível retirar uma quantidade.',
+      );
+    }
+
     const TransformNumber = Object.values(FindActuallyQuantity)[0];
 
     if (TransformNumber === 0) {
@@ -70,6 +80,17 @@ export class ExitMovementService {
       SubtractQuantity,
       exitMovement.cost_price,
     );
+
+    const NewInventoryMovement = await this.inventoryRepository.findInventory(
+      ProductId,
+    );
+
+    await this.inventoryMovementRepository.createInventoryMovement({
+      id_inventory: NewInventoryMovement.id,
+      exit_amount_moved: exitMovement.quantity,
+      actually_quantity: NewInventoryMovement.quantity,
+      actually_cost_price: NewInventoryMovement.cost_price,
+    });
 
     return ExitMovement.raw;
   }

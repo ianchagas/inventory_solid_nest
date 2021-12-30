@@ -19,9 +19,10 @@ export class InventoryMovement1634478096000 implements MigrationInterface {
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
-          { name: 'entry_movement_quantity', type: 'int', isNullable: true },
-          { name: 'exit_movement_quantity', type: 'int', isNullable: true },
-          { name: 'cost_price_movement', type: 'decimal', isNullable: true },
+          { name: 'actually_quantity', type: 'int', isNullable: true },
+          { name: 'entry_amount_moved', type: 'int', isNullable: true },
+          { name: 'exit_amount_moved', type: 'int', isNullable: true },
+          { name: 'actually_cost_price', type: 'decimal', isNullable: true },
           { name: 'comments', type: 'varchar', isNullable: true },
           {
             name: 'date_movement',

@@ -60,6 +60,12 @@ export class EntryMovementService {
         cost_price: entryMovement.cost_price,
       });
 
+      await this.inventoryMovementRepository.createInventoryMovement({
+        id_inventory: EntryMovement.id,
+        entry_amount_moved: entryMovement.quantity,
+        actually_quantity: EntryMovement.quantity,
+      });
+
       return EntryMovement;
     }
 
@@ -72,6 +78,17 @@ export class EntryMovementService {
       SumQuantity,
       entryMovement.cost_price,
     );
+
+    const NewInventoryMovement = await this.inventoryRepository.findInventory(
+      ProductId,
+    );
+
+    await this.inventoryMovementRepository.createInventoryMovement({
+      id_inventory: NewInventoryMovement.id,
+      entry_amount_moved: entryMovement.quantity,
+      actually_quantity: NewInventoryMovement.quantity,
+      actually_cost_price: NewInventoryMovement.cost_price,
+    });
 
     return EntryMovement.raw;
   }

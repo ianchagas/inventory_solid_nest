@@ -16,9 +16,13 @@ class InventoryMovementRepository implements IInventoryMovementRepository {
   ) {}
 
   async createInventoryMovement(data: InventoryMovementDTO): Promise<any> {
-    const CreateInventoryMovement =
-      this.inventoryMovementRepository.create(data);
-    console.log(CreateInventoryMovement);
+    const NewMovement = data;
+    const CreateNewInventoryMovement =
+      this.inventoryMovementRepository.create(NewMovement);
+    const SaveMovement = await this.inventoryMovementRepository.save(
+      CreateNewInventoryMovement,
+    );
+    return SaveMovement;
   }
 }
 
