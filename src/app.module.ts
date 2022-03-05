@@ -31,6 +31,13 @@ import { UserModule } from '@user/user';
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
       entities: getMetadataArgsStorage().tables.map((tbl) => tbl.target),
+      synchronize: false,
+      migrationsRun: true,
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
       migrations: [process.env.TYPEORM_MIGRATIONS],
       cli: {
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
