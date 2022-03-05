@@ -1,7 +1,7 @@
-version: "3.7"
+version: '3.7'
 
 services:
-  db:
+  database:
     image: postgres
     container_name: MelanzaneDB
     restart: always
@@ -15,24 +15,8 @@ services:
       - pgdata:/data/postgres
     networks:
       - melanzane
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: MelanzaneApp
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/app
-    links:
-      - db
-    depends_on:
-      - db
-    networks:
-      - melanzane
 volumes:
   pgdata:
     driver: local
 networks:
   melanzane:
-    external: true

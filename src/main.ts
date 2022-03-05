@@ -19,9 +19,6 @@ async function bootstrap() {
       exceptionFactory: (errors: ValidationError[]) => {
         const message = errors.map(
           (error) => `${Object.values(error.constraints).join(', ')}`,
-          // `${error.property} has wrong value ${error.value}, ${Object.values(
-          //   error.constraints,
-          // ).join(', ')}`,
         );
 
         return new ValidationException(message);
@@ -39,14 +36,16 @@ async function bootstrap() {
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  // app.useGlobalPipes(
-  //   new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
-  // );
   SwaggerModule.setup('api', app, document, {
-    swaggerOptions: { defaultModelsExpandDepth: -1 },
+    swaggerOptions: {
+      defaultModelsExpandDepth: -1,
+      tagsSorter: 'alpha',
+      operationsSorter: 'alpha',
+      docExpansion: 'none',
+    },
   });
 
-  await app.listen(process.env.NESTJS_PORT || 3000);
+  await app.listen(process.env.PORT || 3000, '0.0.0.0');
 }
 
 bootstrap();
