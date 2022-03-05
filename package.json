@@ -5,6 +5,11 @@
   "author": "Ian Chagas Salgado",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build --tsc",
