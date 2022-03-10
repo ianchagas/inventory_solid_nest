@@ -7,11 +7,11 @@ class QueryPeopleDTO {
 
   email?: string;
 
-  cpf?: number;
+  cpf?: string;
 
-  cnpj?: number;
+  cnpj?: string;
 
-  ie?: number;
+  ie?: string;
 
   corporate_name?: string;
 

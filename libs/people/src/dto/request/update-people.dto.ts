@@ -31,16 +31,16 @@ class UpdatePeopleDTO {
   email?: string;
 
   @IsOptional()
-  @IsNumber()
-  cpf?: number;
+  @IsString()
+  cpf?: string;
 
   @IsOptional()
-  @IsNumber()
-  cnpj?: number;
+  @IsString()
+  cnpj?: string;
 
   @IsOptional()
-  @IsNumber()
-  ie?: number;
+  @IsString()
+  ie?: string;
 
   @IsString()
   @IsOptional()

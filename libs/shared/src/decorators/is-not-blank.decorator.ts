@@ -1,5 +1,3 @@
-
-  
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable func-names */
 /* eslint-disable @typescript-eslint/ban-types */

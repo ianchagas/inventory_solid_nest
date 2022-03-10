@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { AddressModule } from 'libs/address/src';
 import { CategoryModule } from 'libs/category/src';
 import { InventoryModule } from 'libs/inventory/src';
@@ -5,17 +6,29 @@ import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
 import { getMetadataArgsStorage } from 'typeorm';
 
 import { DepositModule } from '@deposit/deposit';
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { PeopleModule } from '@people/people';
 import { ProductModule } from '@product/product';
+import { SharedModule } from '@shared/shared';
+import { AuthMiddleware } from '@shared/shared/middleware/auth-middleware';
 import { UserModule } from '@user/user';
+import { CreateUserController } from '@user/user/useCase/createUser/create-user.controller';
+import { DeleteUserController } from '@user/user/useCase/deleteUser/delete-user.controller';
+import { FindUserController } from '@user/user/useCase/findUser/find-user.controller';
+import { UpdateUserController } from '@user/user/useCase/updateUser/update-user.controller';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     UserModule,
+    SharedModule,
     PeopleModule,
     AddressModule,
     UnitOfMeasurementModule,
@@ -46,4 +59,19 @@ import { UserModule } from '@user/user';
   ],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthMiddleware)
+      .exclude({
+        path: '/api/melanzane/user/login',
+        method: RequestMethod.POST,
+      })
+      .forRoutes(
+        CreateUserController,
+        UpdateUserController,
+        FindUserController,
+        DeleteUserController,
+      );
+  }
+}

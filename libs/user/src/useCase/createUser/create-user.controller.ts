@@ -7,9 +7,9 @@ import { CreateUserService } from './create-user.service';
 @Controller()
 export class CreateUserController {
   constructor(private createUserService: CreateUserService) {}
-  @Post('/user/create')
-  async handle(@Body() createUserService: CreateUserDTO): Promise<UserEntity> {
-    const CreateUser = this.createUserService.execute(createUserService);
+  @Post('/api/melanzane/user/create')
+  async handle(@Body() createUserDTO: CreateUserDTO): Promise<UserEntity> {
+    const CreateUser = this.createUserService.execute({ createUserDTO });
     return CreateUser;
   }
 }

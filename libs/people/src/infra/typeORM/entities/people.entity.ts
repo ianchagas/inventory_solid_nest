@@ -23,13 +23,13 @@ class PeopleEntity {
   email: string;
 
   @Column()
-  cpf: number;
+  cpf: string;
 
   @Column()
-  cnpj: number;
+  cnpj: string;
 
   @Column()
-  ie: number;
+  ie: string;
 
   @Column()
   corporate_name: string;
