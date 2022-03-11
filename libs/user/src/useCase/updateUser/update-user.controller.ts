@@ -1,15 +1,21 @@
 import { UpdateResult } from 'typeorm';
 
 import { Body, Controller, Param, ParseUUIDPipe, Put } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { uuidOptions } from '@shared/shared/pipes/uuid.config';
 import { CreateUserDTO } from '@user/user/dto/request/create-user.dto';
 import { UserEntity } from '@user/user/infra/typeORM/entities/user.entity';
 
 import { UpdateUserService } from './update-user.service';
 
+@ApiTags('Usuários')
+@ApiBearerAuth()
 @Controller()
 export class UpdateUserController {
   constructor(private updateUserService: UpdateUserService) {}
+  @ApiOperation({
+    summary: 'Altera as informações de um usuário.',
+  })
   @Put('/api/melanzane/user/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,

@@ -1,14 +1,10 @@
 /* eslint-disable no-param-reassign */
-import {
-  ConflictException,
-  Inject,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { IPeopleRepository } from '@people/people/implementations/people.interface';
 import { PeopleRepository } from '@people/people/infra/typeORM/repositories/people.repository';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 @Injectable()
 export class DeletePeopleService {
@@ -20,11 +16,11 @@ export class DeletePeopleService {
   ) {}
 
   async execute(uuid: string): Promise<void> {
-    const PeopleExists = await this.peopleRepository.findPeopleByIUUID(uuid);
-
-    if (!PeopleExists) {
-      throw new NotFoundException('Entidade não encontrada');
-    }
+    const PeopleExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.peopleRepository,
+      );
 
     const PeopleId = PeopleExists.id;
 

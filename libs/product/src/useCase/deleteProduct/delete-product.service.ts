@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 @Injectable()
 export class DeleteProductService {
@@ -21,11 +22,11 @@ export class DeleteProductService {
   ) {}
 
   async execute(uuid: string): Promise<void> {
-    const ProductExists = await this.productRepository.findByUUID(uuid);
-
-    if (!ProductExists) {
-      throw new NotFoundException('Produto não existe');
-    }
+    const ProductExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.productRepository,
+      );
 
     const ProductId = ProductExists.id;
 

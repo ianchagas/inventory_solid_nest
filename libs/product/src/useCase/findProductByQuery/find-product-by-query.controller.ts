@@ -1,11 +1,17 @@
 import { Controller, Get, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
 
 import { FindProductByQueryService } from './find-product-by-query.service';
 
+@ApiTags('Produtos')
+@ApiBearerAuth()
 @Controller()
 export class FindProductByQueryController {
   constructor(private findProductByQueryService: FindProductByQueryService) {}
+  @ApiOperation({
+    summary: 'Busca e lista os produtos através de parâmetros.',
+  })
   @Get('/api/melanzane/product/find')
   async handle(
     @Query('name') name: string,

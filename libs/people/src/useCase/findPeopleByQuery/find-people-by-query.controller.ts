@@ -1,11 +1,17 @@
 import { Controller, Get, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { PeopleEntity } from '@people/people/infra/typeORM/entities/people.entity';
 
 import { FindPeopleByQueryService } from './find-people-by-query.service';
 
+@ApiTags('Pessoas/Fornecedores')
+@ApiBearerAuth()
 @Controller()
 export class FindPeopleByQueryController {
   constructor(private findPeopleByQueryService: FindPeopleByQueryService) {}
+  @ApiOperation({
+    summary: 'Lista as entidades através de parâmetros.',
+  })
   @Get('/api/melanzane/people/find')
   async handle(
     @Query('id') id: number,
