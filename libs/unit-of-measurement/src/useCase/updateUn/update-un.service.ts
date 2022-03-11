@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { UpdateResult } from 'typeorm';
 
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { IPeopleRepository } from '@people/people/implementations/people.interface';
-import { PeopleRepository } from '@people/people/infra/typeORM/repositories/people.repository';
+import { Inject, Injectable } from '@nestjs/common';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 import { UnitOfMeasurementDTO } from '../../dto/request/unit-of-measurement.dto';
 import { IUnitOfMeasurementRepository } from '../../implementations/unit-of-measurement.interface';
@@ -22,11 +21,11 @@ export class UpdateUnService {
   ) {}
 
   async execute({ uuid, updateUnDTO }: IRequest): Promise<UpdateResult> {
-    const UnExists = await this.unRepository.findUnByUUID(uuid);
-
-    if (!UnExists) {
-      throw new NotFoundException('Unidade de Medida não encontrada');
-    }
+    const UnExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.unRepository,
+      );
 
     updateUnDTO.uuid = UnExists.uuid;
 

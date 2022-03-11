@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 @Injectable()
 export class DeleteDepositService {
@@ -20,11 +21,11 @@ export class DeleteDepositService {
   ) {}
 
   async execute(uuid: string): Promise<void> {
-    const DepositExists = await this.depositRepository.findDepositByUUID(uuid);
-
-    if (!DepositExists) {
-      throw new NotFoundException('Deposito não encontrado');
-    }
+    const DepositExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.depositRepository,
+      );
 
     const DepositId = DepositExists.id;
 

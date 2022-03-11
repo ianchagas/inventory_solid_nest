@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 import { IUnitOfMeasurementRepository } from '../../implementations/unit-of-measurement.interface';
 import { UnitOfMeasurementRepository } from '../../infra/typeORM/repositories/unit-of-measurement.repository';
@@ -21,11 +22,12 @@ export class DeleteUnService {
   ) {}
 
   async execute(uuid: string): Promise<void> {
-    const UnExists = await this.unRepository.findUnByUUID(uuid);
+    const UnExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.unRepository,
+      );
 
-    if (!UnExists) {
-      throw new NotFoundException('Unidade de medida não encontrada');
-    }
     const UnId = UnExists.id;
 
     const FindConflictInUnAndProduct = await this.productRepository.findByUnId(

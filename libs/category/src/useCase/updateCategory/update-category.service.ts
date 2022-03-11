@@ -2,6 +2,7 @@
 import { UpdateResult } from 'typeorm';
 
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 import { CategoryDTO } from '../../dto/request/category.dto';
 import { ICategoryRepository } from '../../implementations/category.interface';
@@ -20,13 +21,11 @@ export class UpdateCategoryService {
   ) {}
 
   async execute({ uuid, updateCategoryDTO }: IRequest): Promise<UpdateResult> {
-    const CategoryExists = await this.categoryRepository.findCategoryByUUID(
-      uuid,
-    );
-
-    if (!CategoryExists) {
-      throw new NotFoundException('Unidade de Medida não encontrada');
-    }
+    const CategoryExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.categoryRepository,
+      );
 
     updateCategoryDTO.uuid = CategoryExists.uuid;
     const UpdateCategory = await this.categoryRepository.update(

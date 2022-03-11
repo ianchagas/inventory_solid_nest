@@ -16,6 +16,7 @@ import { PeopleRepository } from '@people/people/infra/typeORM/repositories/peop
 import { UpdateProductDTO } from '@product/product/dto/request/update-product.dto';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 import { IUnitOfMeasurementRepository } from '@unit_of_measurement/unit-of-measurement/implementations/unit-of-measurement.interface';
 import { UnitOfMeasurementRepository } from '@unit_of_measurement/unit-of-measurement/infra/typeORM/repositories/unit-of-measurement.repository';
 
@@ -40,15 +41,15 @@ export class UpdateProductService {
   ) {}
 
   async execute({ uuid, updateProduct }: IRequest): Promise<UpdateResult> {
-    const FindProductByUUID = await this.productRepository.findByUUID(uuid);
-
-    if (!FindProductByUUID) {
-      throw new NotFoundException('Produto não encontrado');
-    }
+    const ProductExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.productRepository,
+      );
 
     const UpdateProduct = updateProduct;
 
-    UpdateProduct.uuid = FindProductByUUID.uuid;
+    UpdateProduct.uuid = ProductExists.uuid;
 
     if (UpdateProduct.id_deposit) {
       const DepositId = await this.depositRepository.findById(

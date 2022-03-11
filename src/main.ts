@@ -1,31 +1,10 @@
-import { ValidationError, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import {
-  ValidationException,
-  ValidationFilter,
-} from '@shared/shared/filters/validation-exception.filter';
 
 import { AppModule } from './app.module';
 
-export class Test extends ValidationPipe {}
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      whitelist: true,
-      exceptionFactory: (errors: ValidationError[]) => {
-        const message = errors.map(
-          (error) => `${Object.values(error.constraints).join(', ')}`,
-        );
-
-        return new ValidationException(message);
-      },
-    }),
-  );
-  app.useGlobalFilters(new ValidationFilter());
 
   const config = new DocumentBuilder()
     .setTitle('Controle de Estoque - Melanzane')

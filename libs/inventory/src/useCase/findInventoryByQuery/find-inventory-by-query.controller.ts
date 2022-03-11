@@ -1,11 +1,17 @@
 import { Controller, Get, Query } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ProductEntity } from '@product/product/infra/typeORM/entities/product.entity';
 
 import { FindInventoryByQueryService } from './find-inventory-by-query.service';
 
+@ApiTags('Gerenciamento de Estoque')
 @Controller()
 export class FindInventoryByQueryController {
   constructor(private findInventoryByQuery: FindInventoryByQueryService) {}
+  @ApiOperation({
+    summary:
+      'Busca os produtos com informações do estoque através de parâmetros do estoque.',
+  })
   @Get('/api/melanzane/inventory/find')
   async handle(
     @Query('name') name: string,

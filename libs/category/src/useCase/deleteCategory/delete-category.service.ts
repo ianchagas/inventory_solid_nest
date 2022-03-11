@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 import { ICategoryRepository } from '../../implementations/category.interface';
 import { CategoryRepository } from '../../infra/typeORM/repositories/category.repository';
@@ -21,13 +22,11 @@ export class DeleteCategoryService {
   ) {}
 
   async execute(uuid: string): Promise<void> {
-    const CategoryExists = await this.categoryRepository.findCategoryByUUID(
-      uuid,
-    );
-
-    if (!CategoryExists) {
-      throw new NotFoundException('Unidade de Medida não encontrada');
-    }
+    const CategoryExists =
+      await GenericValidationIfExistsReturnQuerys.FindPeopleExists(
+        uuid,
+        this.categoryRepository,
+      );
 
     const CategoryId = CategoryExists.id;
 

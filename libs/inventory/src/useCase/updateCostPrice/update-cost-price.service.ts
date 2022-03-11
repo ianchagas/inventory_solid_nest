@@ -10,6 +10,7 @@ import { InventoryMovementRepository } from '@inventory/inventory/infra/typeORM/
 import { BadRequestException, Inject, NotFoundException } from '@nestjs/common';
 import { IProductRepository } from '@product/product/implementations/product.interface';
 import { ProductRepository } from '@product/product/infra/typeORM/repositories/product.repository';
+import GenericValidationIfExistsReturnQuerys from '@shared/shared/util/generic-validation-if-exists-return-querys';
 
 import { IInventoryRepository } from '../../implementations/inventory.interface';
 import { InventoryEntity } from '../../infra/typeORM/entities/inventory.entity';
@@ -34,17 +35,11 @@ export class UpdateCostPriceService {
     ean,
     costPrice,
   }: IRequest): Promise<InventoryEntity | UpdateResult> {
-    const ProductExists = await this.productRepository.findByEan(ean);
-
-    if (!ProductExists) {
-      throw new NotFoundException('Produto não existe');
-    }
-
-    if (ProductExists.enable === false) {
-      throw new BadRequestException(
-        'Este produto encontra-se desativado, não é possível movimentar estoque.',
+    const ProductExists =
+      await GenericValidationIfExistsReturnQuerys.FindProductExistsAndIsEnable(
+        ean,
+        this.productRepository,
       );
-    }
 
     const ProductId = ProductExists.id;
 
