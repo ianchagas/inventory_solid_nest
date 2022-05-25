@@ -89,8 +89,5 @@
         "tsConfigPath": "libs/inventory/tsconfig.lib.json"
       }
     }
-  },
-  "compilerOptions": {
-    "webpack": true
   }
 }

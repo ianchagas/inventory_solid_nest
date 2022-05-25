@@ -1,4 +1,3 @@
-import { AddressEntity } from 'libs/address/src/infra/typeORM/entities/address.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,6 +6,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { AddressEntity } from '@address/address/infra/typeORM/entities/address.entity';
 
 @Entity('people')
 class PeopleEntity {
