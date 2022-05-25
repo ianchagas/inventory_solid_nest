@@ -262,7 +262,11 @@ class PeopleRepository implements IPeopleRepository {
   }
 
   async findById(id: number): Promise<PeopleEntity> {
-    const FindPeopleById = this.peopleRepository.findOne(id);
+    const FindPeopleById = this.peopleRepository.findOne({
+      where: {
+        id,
+      },
+    });
     return FindPeopleById;
   }
 }

@@ -12,6 +12,7 @@ interface ICategoryRepository {
   findAll(): Promise<CategoryEntity[]>;
   findCategoryByQuery(data: QueryCategoryDTO): Promise<CategoryEntity[]>;
   findById(id: number): Promise<CategoryEntity>;
+  findByName(name: string): Promise<CategoryEntity>;
 }
 
 export { ICategoryRepository };

@@ -30,33 +30,51 @@ class ProductRepository implements IProductRepository {
   }
 
   async findById(id: number): Promise<ProductEntity> {
-    const FindById = await this.productRepository.findOne(id);
+    const FindById = await this.productRepository.findOne({
+      where: {
+        id,
+      },
+    });
 
     return FindById;
   }
 
   async findByPeopleId(id_people: number): Promise<ProductEntity> {
-    const FindByPeopleId = await this.productRepository.findOne(id_people);
+    const FindByPeopleId = await this.productRepository.findOne({
+      where: {
+        id_people,
+      },
+    });
 
     return FindByPeopleId;
   }
 
   async findByCategoryId(id_category: number): Promise<ProductEntity> {
-    const FindByCategoryId = await this.productRepository.findOne(id_category);
+    const FindByCategoryId = await this.productRepository.findOne({
+      where: {
+        id_category,
+      },
+    });
 
     return FindByCategoryId;
   }
 
   async findByDepositId(id_deposit: number): Promise<ProductEntity> {
-    const FindByDepositId = await this.productRepository.findOne(id_deposit);
+    const FindByDepositId = await this.productRepository.findOne({
+      where: {
+        id_deposit,
+      },
+    });
 
     return FindByDepositId;
   }
 
   async findByUnId(id_unit_of_measurement: number): Promise<ProductEntity> {
-    const FindByUnId = await this.productRepository.findOne(
-      id_unit_of_measurement,
-    );
+    const FindByUnId = await this.productRepository.findOne({
+      where: {
+        id_unit_of_measurement,
+      },
+    });
 
     return FindByUnId;
   }

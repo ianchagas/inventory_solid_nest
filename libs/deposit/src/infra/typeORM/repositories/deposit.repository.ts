@@ -108,7 +108,11 @@ class DepositRepository implements IDepositRepository {
   }
 
   async findById(id: number): Promise<DepositEntity> {
-    const FindDepositById = this.depositRepository.findOne(id);
+    const FindDepositById = this.depositRepository.findOne({
+      where: {
+        id,
+      },
+    });
     return FindDepositById;
   }
 }
