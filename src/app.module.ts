@@ -81,17 +81,18 @@ import { UpdateUserController } from '@user/user/useCase/updateUser/update-user.
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
       entities: getMetadataArgsStorage().tables.map((tbl) => tbl.target),
-      synchronize: false,
-      migrationsRun: true,
-      extra: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
       migrations: [process.env.TYPEORM_MIGRATIONS],
+      keepConnectionAlive: true,
+      maxQueryExecutionTime: 1000,
+      migrationsRun: true,
       cli: {
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       },
+      // extra: {
+      //   ssl: {
+      //     rejectUnauthorized: false,
+      //   },
+      // },
     } as TypeOrmModuleOptions),
   ],
   providers: [],

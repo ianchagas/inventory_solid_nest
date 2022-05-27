@@ -3,20 +3,20 @@ version: '3.7'
 services:
   database:
     image: postgres
-    container_name: MelanzaneDB
+    container_name: InventoryDB
     restart: always
     ports:
       - 5434:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=melanzane
+      - POSTGRES_DB=inventory
     volumes:
       - pgdata:/data/postgres
     networks:
-      - melanzane
+      - inventory
 volumes:
   pgdata:
     driver: local
 networks:
-  melanzane:
+  inventory:

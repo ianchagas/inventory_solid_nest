@@ -1,10 +1,10 @@
 {
-  "name": "Melanzane",
+  "name": "Inventory SOLID NestJS",
   "version": "1.0.0",
   "description": "",
   "author": "Ian Chagas Salgado",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "engines": {
     "node": "16.x",
     "npm": "8.x",
@@ -13,10 +13,10 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build --tsc",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d dist/datasource.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch --tsc",
+    "start:dev": "nest start --watch --tsc -d dist/datasource.js",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main",
     "typeorm:run": "npm run build && npm run typeorm migration:run",

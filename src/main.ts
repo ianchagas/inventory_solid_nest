@@ -7,9 +7,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
   const config = new DocumentBuilder()
-    .setTitle('Controle de Estoque - Melanzane')
+    .setTitle('Controle de Estoque')
     .setDescription(
-      'Funcionalidades de controle de estoque para sistema web do Melanzane',
+      'Funcionalidades de controle de estoque usando NestJS e arquitetura SOLID.',
     )
     .setVersion('3.0')
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })

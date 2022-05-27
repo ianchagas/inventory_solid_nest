@@ -2,7 +2,6 @@ import { Type } from 'class-transformer';
 import {
   IsArray,
   IsEmail,
-  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
