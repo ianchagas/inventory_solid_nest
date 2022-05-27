@@ -133,7 +133,11 @@ class UnitOfMeasurementRepository implements IUnitOfMeasurementRepository {
   }
 
   async findById(id: number): Promise<UnitOfMeasurementEntity> {
-    const FindUnById = this.unitOfMeasurementRepository.findOne(id);
+    const FindUnById = this.unitOfMeasurementRepository.findOne({
+      where: {
+        id,
+      },
+    });
     return FindUnById;
   }
 }

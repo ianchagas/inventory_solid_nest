@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-useless-return */
 import { CategoryDTO } from 'libs/category/src/dto/request/category.dto';
 import { ICategoryRepository } from 'libs/category/src/implementations/category.interface';
 import { Repository, UpdateResult } from 'typeorm';
@@ -108,8 +106,22 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   async findById(id: number): Promise<CategoryEntity> {
-    const FindCategoryById = this.categoryRepository.findOne(id);
+    const FindCategoryById = this.categoryRepository.findOne({
+      where: {
+        id,
+      },
+    });
     return FindCategoryById;
+  }
+
+  async findByName(name: string): Promise<CategoryEntity> {
+    const FindCategoryByName = this.categoryRepository.findOne({
+      where: {
+        name,
+      },
+    });
+
+    return FindCategoryByName;
   }
 }
 
