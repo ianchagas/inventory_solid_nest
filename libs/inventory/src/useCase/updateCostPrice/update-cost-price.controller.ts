@@ -15,7 +15,7 @@ export class UpdateCostPriceController {
   @ApiOperation({
     summary: 'Altera o preço de custo do produto.',
   })
-  @Put('/api/melanzane/inventory/update-cost-price/:ean')
+  @Put('/api/inventory/update-cost-price/:ean')
   async handle(
     @Param('ean') ean: string,
     @Body() costPrice: CostPriceDTO,

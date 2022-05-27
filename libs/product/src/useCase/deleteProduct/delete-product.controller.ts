@@ -12,7 +12,7 @@ export class DeleteProductController {
   @ApiOperation({
     summary: 'Deleta um produto.',
   })
-  @Delete('/api/melanzane/product/delete/:uuid')
+  @Delete('/api/product/delete/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
   ): Promise<void> {

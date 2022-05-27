@@ -13,7 +13,7 @@ export class CreateCategoryController {
   @ApiOperation({
     summary: 'Cria uma nova categoria de produto.',
   })
-  @Post('/api/melanzane/category/create')
+  @Post('/api/category/create')
   async handle(
     @Body() createCategoryDTO: CategoryDTO,
   ): Promise<CategoryEntity> {

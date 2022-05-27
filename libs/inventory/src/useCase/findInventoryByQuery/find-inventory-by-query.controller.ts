@@ -12,7 +12,7 @@ export class FindInventoryByQueryController {
     summary:
       'Busca os produtos com informações do estoque através de parâmetros do estoque.',
   })
-  @Get('/api/melanzane/inventory/find')
+  @Get('/api/inventory/find')
   async handle(
     @Query('name') name: string,
     @Query('code') code: string,

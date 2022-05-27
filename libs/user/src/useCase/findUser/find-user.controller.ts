@@ -12,7 +12,7 @@ export class FindUserController {
   @ApiOperation({
     summary: 'Busca usuários através de parâmetros.',
   })
-  @Get('/api/melanzane/user/find')
+  @Get('/api/user/find')
   async handle(
     @Query('name') name: string,
     @Query('email') email: string,

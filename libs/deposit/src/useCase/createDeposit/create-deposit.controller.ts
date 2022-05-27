@@ -13,7 +13,7 @@ export class CreateDepositController {
   @ApiOperation({
     summary: 'Cria o cadastro de um novo depósito.',
   })
-  @Post('/api/melanzane/deposit/create')
+  @Post('/api/deposit/create')
   async handle(@Body() createDepositDTO: DepositDTO): Promise<DepositEntity> {
     return this.createDepositService.execute({ createDepositDTO });
   }

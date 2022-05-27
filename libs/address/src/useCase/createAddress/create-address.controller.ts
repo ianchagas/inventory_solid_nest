@@ -14,7 +14,7 @@ export class CreateAddressController {
   @ApiOperation({
     summary: 'Cria um novo endereço para um cadastro de pessoa existente',
   })
-  @Post('/api/melanzane/address/create/:uuid_people')
+  @Post('/api/address/create/:uuid_people')
   async handle(
     @Param('uuid_people', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() createAddressDTO: AddressDTO,

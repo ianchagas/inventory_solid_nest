@@ -11,7 +11,7 @@ export class LoginUserController {
   @ApiOperation({
     summary: 'Gera o Token JWT do usuário, criando um novo login',
   })
-  @Post('/api/melanzane/user/login')
+  @Post('/api/user/login')
   async handle(@Body() loginUserDto: LoginUserDTO): Promise<string> {
     const LoginUser = this.loginUserService.execute({ loginUserDto });
     return LoginUser;

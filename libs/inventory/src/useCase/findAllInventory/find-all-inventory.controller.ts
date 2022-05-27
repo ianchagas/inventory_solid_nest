@@ -11,7 +11,7 @@ export class FindAllInventoryController {
   @ApiOperation({
     summary: 'Busca todos os produtos com informações do estoque atual.',
   })
-  @Get('/api/melanzane/inventory/find-all')
+  @Get('/api/inventory/find-all')
   async handle(): Promise<ProductEntity[]> {
     return this.findAllInventory.execute();
   }

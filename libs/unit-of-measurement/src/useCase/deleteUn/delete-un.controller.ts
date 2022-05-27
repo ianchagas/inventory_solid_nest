@@ -12,7 +12,7 @@ export class DeleteUnController {
   @ApiOperation({
     summary: 'Deleta uma unidade de medida.',
   })
-  @Delete('/api/melanzane/un/delete/:uuid')
+  @Delete('/api/un/delete/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
   ): Promise<void> {

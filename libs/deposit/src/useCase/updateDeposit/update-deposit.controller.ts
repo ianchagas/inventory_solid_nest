@@ -15,7 +15,7 @@ export class UpdateDepositController {
   @ApiOperation({
     summary: 'Altera as informações de um depósito.',
   })
-  @Put('/api/melanzane/deposit/update/:uuid')
+  @Put('/api/deposit/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateDepositDTO: DepositDTO,

@@ -17,7 +17,7 @@ export class UpdateMinMaxQuantityController {
   @ApiOperation({
     summary: 'Altera a gestão de quantidade minima e máxima do estoque.',
   })
-  @Put('/api/melanzane/inventory/update-min-max-quantity/:ean')
+  @Put('/api/inventory/update-min-max-quantity/:ean')
   async handle(
     @Param('ean') ean: string,
     @Body() MinMaxQtde: MinMaxQuantityDTO,

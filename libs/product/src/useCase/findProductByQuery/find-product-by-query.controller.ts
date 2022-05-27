@@ -12,7 +12,7 @@ export class FindProductByQueryController {
   @ApiOperation({
     summary: 'Busca e lista os produtos através de parâmetros.',
   })
-  @Get('/api/melanzane/product/find')
+  @Get('/api/product/find')
   async handle(
     @Query('name') name: string,
     @Query('code') code: string,

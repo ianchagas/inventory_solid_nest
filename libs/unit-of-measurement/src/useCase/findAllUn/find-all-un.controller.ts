@@ -12,7 +12,7 @@ export class FindAllUnController {
   @ApiOperation({
     summary: 'Lista todas as unidades de medida.',
   })
-  @Get('/api/melanzane/un/find-all')
+  @Get('/api/un/find-all')
   async handle(): Promise<UnitOfMeasurementEntity[]> {
     return this.findAllUnService.execute();
   }
