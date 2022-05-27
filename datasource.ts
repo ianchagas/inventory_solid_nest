@@ -20,11 +20,11 @@ const config = {
     migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
     entitiesDir: '',
   },
-  // extra: {
-  //   ssl: {
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 };
 
 export const dataSource = new DataSource(config);

@@ -88,11 +88,11 @@ import { UpdateUserController } from '@user/user/useCase/updateUser/update-user.
       cli: {
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       },
-      // extra: {
-      //   ssl: {
-      //     rejectUnauthorized: false,
-      //   },
-      // },
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
     } as TypeOrmModuleOptions),
   ],
   providers: [],
