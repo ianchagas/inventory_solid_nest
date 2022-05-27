@@ -15,7 +15,7 @@ export class ExitMovementEachOneController {
     summary:
       'Cria um movimento de saída de uma quantidade a cada vez que há uma bipagem do produto (pelo EAN).',
   })
-  @Patch('/api/melanzane/inventory/exit-movement-each-one/:ean')
+  @Patch('/api/inventory/exit-movement-each-one/:ean')
   async handle(
     @Param('ean') ean: string,
   ): Promise<InventoryEntity | UpdateResult> {

@@ -15,7 +15,7 @@ export class AdjustmentMovementController {
   @ApiOperation({
     summary: 'Cria um movimento de ajuste.',
   })
-  @Put('/api/melanzane/inventory/adjustment-movement/:ean')
+  @Put('/api/inventory/adjustment-movement/:ean')
   async handle(
     @Param('ean') ean: string,
     @Body() adjustmentMovement: InventoryDTO,

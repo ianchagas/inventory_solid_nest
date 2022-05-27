@@ -15,7 +15,7 @@ export class UpdateCategoryController {
   @ApiOperation({
     summary: 'Altera informações nas categorias de produto.',
   })
-  @Put('/api/melanzane/category/update/:uuid')
+  @Put('/api/category/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateCategoryDTO: CategoryDTO,

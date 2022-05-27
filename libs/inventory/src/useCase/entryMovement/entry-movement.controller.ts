@@ -15,7 +15,7 @@ export class EntryMovementController {
   @ApiOperation({
     summary: 'Cria um movimento de entrada manualmente.',
   })
-  @Put('/api/melanzane/inventory/entry-movement/:ean')
+  @Put('/api/inventory/entry-movement/:ean')
   async handle(
     @Param('ean') ean: string,
     @Body() entryMovement: InventoryDTO,

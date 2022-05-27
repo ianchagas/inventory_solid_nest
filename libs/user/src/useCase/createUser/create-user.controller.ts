@@ -13,7 +13,7 @@ export class CreateUserController {
   @ApiOperation({
     summary: 'Cria um novo usuário.',
   })
-  @Post('/api/melanzane/user/create')
+  @Post('/api/user/create')
   async handle(@Body() createUserDTO: CreateUserDTO): Promise<UserEntity> {
     const CreateUser = this.createUserService.execute({ createUserDTO });
     return CreateUser;

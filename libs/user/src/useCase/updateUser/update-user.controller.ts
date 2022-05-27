@@ -16,7 +16,7 @@ export class UpdateUserController {
   @ApiOperation({
     summary: 'Altera as informações de um usuário.',
   })
-  @Put('/api/melanzane/user/update/:uuid')
+  @Put('/api/user/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateUserDto: CreateUserDTO,

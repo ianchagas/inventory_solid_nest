@@ -12,7 +12,7 @@ export class DeleteAddressController {
   @ApiOperation({
     summary: 'Delete o endereço de uma pessoa',
   })
-  @Delete('/api/melanzane/address/delete/:uuid_people')
+  @Delete('/api/address/delete/:uuid_people')
   async handle(
     @Param('uuid_people', new ParseUUIDPipe(uuidOptions)) uuid: string,
   ): Promise<void> {

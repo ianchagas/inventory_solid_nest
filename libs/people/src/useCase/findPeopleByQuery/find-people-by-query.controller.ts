@@ -12,7 +12,7 @@ export class FindPeopleByQueryController {
   @ApiOperation({
     summary: 'Lista as entidades através de parâmetros.',
   })
-  @Get('/api/melanzane/people/find')
+  @Get('/api/people/find')
   async handle(
     @Query('id') id: number,
     @Query('uuid') uuid: string,

@@ -103,15 +103,15 @@ export class AppModule implements NestModule {
       .apply(AuthMiddleware)
       .exclude(
         {
-          path: '/api/melanzane/user/login',
+          path: '/api/user/login',
           method: RequestMethod.POST,
         },
         {
-          path: '/api/melanzane/inventory/find-all',
+          path: '/api/inventory/find-all',
           method: RequestMethod.GET,
         },
         {
-          path: '/api/melanzane/product/find',
+          path: '/api/product/find',
           method: RequestMethod.GET,
         },
       )

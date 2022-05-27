@@ -15,7 +15,7 @@ export class ExitMovementController {
   @ApiOperation({
     summary: 'Cria um movimento de saída manualmente.',
   })
-  @Put('/api/melanzane/inventory/exit-movement/:ean')
+  @Put('/api/inventory/exit-movement/:ean')
   async handle(
     @Param('ean') ean: string,
     @Body() exitMovement: InventoryDTO,

@@ -12,7 +12,7 @@ export class FindUnByQueryController {
   @ApiOperation({
     summary: 'Busca as unidades de medida através dos parâmetros.',
   })
-  @Get('/api/melanzane/un/find')
+  @Get('/api/un/find')
   async handle(
     @Query('id') id: number,
     @Query('uuid') uuid: string,

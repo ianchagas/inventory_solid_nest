@@ -12,7 +12,7 @@ export class FindAllCategoryController {
   @ApiOperation({
     summary: 'Busca todas as categorias de produto.',
   })
-  @Get('/api/melanzane/category/find-all')
+  @Get('/api/category/find-all')
   async handle(): Promise<CategoryEntity[]> {
     return this.findAllCategoryService.execute();
   }

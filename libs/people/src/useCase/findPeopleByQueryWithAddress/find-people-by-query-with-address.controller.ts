@@ -15,7 +15,7 @@ export class FindPeopleByQueryWithAddressController {
     summary:
       'Lista as entidades através de parâmetros, trazendo também informações do endereço.',
   })
-  @Get('/api/melanzane/people/find-with-address')
+  @Get('/api/people/find-with-address')
   async handle(
     @Query('id') id: number,
     @Query('uuid') uuid: string,

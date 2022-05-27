@@ -15,7 +15,7 @@ export class UpdatePeopleController {
   @ApiOperation({
     summary: 'Altera as informações da entidade.',
   })
-  @Put('/api/melanzane/people/update/:uuid')
+  @Put('/api/people/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updatePeopleDTO: UpdatePeopleDTO,

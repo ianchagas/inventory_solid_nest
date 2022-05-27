@@ -13,7 +13,7 @@ export class CreatePeopleController {
   @ApiOperation({
     summary: 'Cria um cadastro de uma entidade.',
   })
-  @Post('/api/melanzane/people/create')
+  @Post('/api/people/create')
   async handle(
     @Body() createPeopleDTO: CreatePeopleDTO,
   ): Promise<PeopleEntity> {

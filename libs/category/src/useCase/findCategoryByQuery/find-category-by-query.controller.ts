@@ -12,7 +12,7 @@ export class FindCategoryByQueryController {
   @ApiOperation({
     summary: 'Busca categorias de produto através de parâmetros.',
   })
-  @Get('/api/melanzane/category/find')
+  @Get('/api/category/find')
   async handle(
     @Query('id') id: number,
     @Query('uuid') uuid: string,

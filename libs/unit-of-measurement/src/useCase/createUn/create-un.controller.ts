@@ -13,7 +13,7 @@ export class CreateUnController {
   @ApiOperation({
     summary: 'Cria a informação para uma unidade de medida.',
   })
-  @Post('/api/melanzane/un/create')
+  @Post('/api/un/create')
   async handle(
     @Body() createUnitOfMeasurementDTO: UnitOfMeasurementDTO,
   ): Promise<UnitOfMeasurementEntity> {

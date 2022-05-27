@@ -17,7 +17,7 @@ export class EntryMovementEachOneController {
     summary:
       'Cria um movimento de entrada para uma quantidade a cada vez que há uma bipagem do produto (pelo EAN).',
   })
-  @Patch('/api/melanzane/inventory/entry-movement-each-one/:ean')
+  @Patch('/api/inventory/entry-movement-each-one/:ean')
   async handle(
     @Param('ean') ean: string,
   ): Promise<InventoryEntity | UpdateResult> {

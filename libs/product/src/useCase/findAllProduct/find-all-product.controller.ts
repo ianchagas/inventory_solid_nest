@@ -12,7 +12,7 @@ export class FindAllProductController {
   @ApiOperation({
     summary: 'Lista todos os produtos.',
   })
-  @Get('/api/melanzane/product/find-all')
+  @Get('/api/product/find-all')
   async handle(): Promise<ProductEntity[]> {
     return this.findAllProductService.execute();
   }

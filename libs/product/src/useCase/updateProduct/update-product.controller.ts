@@ -15,7 +15,7 @@ export class UpdateProductController {
   @ApiOperation({
     summary: 'Altera as informações de um produto.',
   })
-  @Put('/api/melanzane/product/update/:uuid')
+  @Put('/api/product/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateProduct: UpdateProductDTO,

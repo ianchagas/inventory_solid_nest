@@ -15,7 +15,7 @@ export class UpdateAddressController {
   @ApiOperation({
     summary: 'Altera o endereço de uma pessoa',
   })
-  @Put('/api/melanzane/address/update/:uuid_people')
+  @Put('/api/address/update/:uuid_people')
   async handle(
     @Param('uuid_people', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateAddressDTO: AddressDTO,

@@ -12,7 +12,7 @@ export class DeleteDepositController {
   @ApiOperation({
     summary: 'Deleta o cadastro de um depósito.',
   })
-  @Delete('/api/melanzane/deposit/delete/:uuid')
+  @Delete('/api/deposit/delete/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
   ): Promise<void> {

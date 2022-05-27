@@ -15,7 +15,7 @@ export class FindAllPeopleWithAddressController {
     summary:
       'Lista todas as entidades cadastradas trazendo também informações do endereço.',
   })
-  @Get('/api/melanzane/people/find-all-with-address')
+  @Get('/api/people/find-all-with-address')
   async handle(): Promise<PeopleEntity[]> {
     return this.findAllPeopleWithAddressService.execute();
   }

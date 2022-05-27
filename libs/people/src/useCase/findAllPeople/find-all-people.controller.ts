@@ -12,7 +12,7 @@ export class FindAllPeopleController {
   @ApiOperation({
     summary: 'Lista todas as entidades cadastradas.',
   })
-  @Get('/api/melanzane/people/find-all')
+  @Get('/api/people/find-all')
   async handle(): Promise<PeopleEntity[]> {
     return this.findAllPeopleService.execute();
   }

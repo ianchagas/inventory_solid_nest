@@ -13,7 +13,7 @@ export class CreateProductController {
   @ApiOperation({
     summary: 'Cadastra um novo produto.',
   })
-  @Post('/api/melanzane/product/create')
+  @Post('/api/product/create')
   async handle(@Body() createProductDTO: ProductDTO): Promise<ProductEntity> {
     return this.createProductService.execute({ createProductDTO });
   }

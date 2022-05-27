@@ -12,7 +12,7 @@ export class FindAllDepositController {
   @ApiOperation({
     summary: 'Busca todos os depósitos.',
   })
-  @Get('/api/melanzane/deposit/find-all')
+  @Get('/api/deposit/find-all')
   async handle(): Promise<DepositEntity[]> {
     return this.findAllDepositService.execute();
   }

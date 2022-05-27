@@ -15,7 +15,7 @@ export class UpdateUnController {
   @ApiOperation({
     summary: 'Altera as informações da unidade de medida.',
   })
-  @Put('/api/melanzane/un/update/:uuid')
+  @Put('/api/un/update/:uuid')
   async handle(
     @Param('uuid', new ParseUUIDPipe(uuidOptions)) uuid: string,
     @Body() updateUnDTO: UnitOfMeasurementDTO,
