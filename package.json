@@ -1,10 +1,10 @@
 {
-  "name": "Inventory SOLID NestJS",
+  "name": "Inventory",
   "version": "1.0.0",
   "description": "",
   "author": "Ian Chagas Salgado",
   "private": true,
-  "license": "MIT",
+  "license": "",
   "engines": {
     "node": "16.x",
     "npm": "8.x",
