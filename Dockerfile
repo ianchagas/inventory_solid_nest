@@ -1,4 +1,4 @@
-FROM node:14.17.6-alpine3.12
+FROM node:16-alpine
 
 RUN apk add --no-cache bash
 
@@ -8,11 +8,11 @@ WORKDIR /app
 
 COPY --chown=root package.json .
 
-RUN npm install
+RUN yarn install
 
 COPY . .
 
-RUN npm run build
+RUN yarn run build
 
 EXPOSE 3000
 

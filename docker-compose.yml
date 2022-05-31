@@ -15,6 +15,22 @@ services:
       - pgdata:/data/postgres
     networks:
       - inventory
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Inventory
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    links:
+      - database
+    networks:
+      - inventory
+    depends_on:
+      - database
 volumes:
   pgdata:
     driver: local
