@@ -4,11 +4,11 @@
   "projects": {
     "shared": {
       "type": "library",
-      "root": "libs/shared",
+      "root": "module/shared",
       "entryFile": "index",
-      "sourceRoot": "libs/shared/src",
+      "sourceRoot": "module/shared/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/shared/tsconfig.lib.json"
+        "tsConfigPath": "module/shared/tsconfig.lib.json"
       }
     },
     "compilerOptions": {
@@ -19,74 +19,74 @@
     },
     "user": {
       "type": "library",
-      "root": "libs/user",
+      "root": "module/user",
       "entryFile": "index",
-      "sourceRoot": "libs/user/src",
+      "sourceRoot": "module/user/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/user/tsconfig.lib.json"
+        "tsConfigPath": "module/user/tsconfig.lib.json"
       }
     },
     "people": {
       "type": "library",
-      "root": "libs/people",
+      "root": "module/people",
       "entryFile": "index",
-      "sourceRoot": "libs/people/src",
+      "sourceRoot": "module/people/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/people/tsconfig.lib.json"
+        "tsConfigPath": "module/people/tsconfig.lib.json"
       }
     },
     "address": {
       "type": "library",
-      "root": "libs/address",
+      "root": "module/address",
       "entryFile": "index",
-      "sourceRoot": "libs/address/src",
+      "sourceRoot": "module/address/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/address/tsconfig.lib.json"
+        "tsConfigPath": "module/address/tsconfig.lib.json"
       }
     },
     "unit-of-measurement": {
       "type": "library",
-      "root": "libs/unit-of-measurement",
+      "root": "module/unit-of-measurement",
       "entryFile": "index",
-      "sourceRoot": "libs/unit-of-measurement/src",
+      "sourceRoot": "module/unit-of-measurement/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/unit-of-measurement/tsconfig.lib.json"
+        "tsConfigPath": "module/unit-of-measurement/tsconfig.lib.json"
       }
     },
     "category": {
       "type": "library",
-      "root": "libs/category",
+      "root": "module/category",
       "entryFile": "index",
-      "sourceRoot": "libs/category/src",
+      "sourceRoot": "module/category/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/category/tsconfig.lib.json"
+        "tsConfigPath": "module/category/tsconfig.lib.json"
       }
     },
     "deposit": {
       "type": "library",
-      "root": "libs/deposit",
+      "root": "module/deposit",
       "entryFile": "index",
-      "sourceRoot": "libs/deposit/src",
+      "sourceRoot": "module/deposit/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/deposit/tsconfig.lib.json"
+        "tsConfigPath": "module/deposit/tsconfig.lib.json"
       }
     },
     "product": {
       "type": "library",
-      "root": "libs/product",
+      "root": "module/product",
       "entryFile": "index",
-      "sourceRoot": "libs/product/src",
+      "sourceRoot": "module/product/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/product/tsconfig.lib.json"
+        "tsConfigPath": "module/product/tsconfig.lib.json"
       }
     },
     "inventory": {
       "type": "library",
-      "root": "libs/inventory",
+      "root": "module/inventory",
       "entryFile": "index",
-      "sourceRoot": "libs/inventory/src",
+      "sourceRoot": "module/inventory/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/inventory/tsconfig.lib.json"
+        "tsConfigPath": "module/inventory/tsconfig.lib.json"
       }
     }
   }

@@ -22,58 +22,58 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@shared/shared": [
-        "libs/shared/src"
+        "modules/shared/src"
       ],
       "@shared/shared/*": [
-        "libs/shared/src/*"
+        "modules/shared/src/*"
       ],
       "@user/user": [
-        "libs/user/src"
+        "modules/user/src"
       ],
       "@user/user/*": [
-        "libs/user/src/*"
+        "modules/user/src/*"
       ],
       "@people/people": [
-        "libs/people/src"
+        "modules/people/src"
       ],
       "@people/people/*": [
-        "libs/people/src/*"
+        "modules/people/src/*"
       ],
       "@address/address": [
-        "libs/address/src"
+        "modules/address/src"
       ],
       "@address/address/*": [
-        "libs/address/src/*"
+        "modules/address/src/*"
       ],
       "@unit_of_measurement/unit-of-measurement": [
-        "libs/unit-of-measurement/src"
+        "modules/unit-of-measurement/src"
       ],
       "@unit_of_measurement/unit-of-measurement/*": [
-        "libs/unit-of-measurement/src/*"
+        "modules/unit-of-measurement/src/*"
       ],
       "@category/category": [
-        "libs/category/src"
+        "modules/category/src"
       ],
       "@category/category/*": [
-        "libs/category/src/*"
+        "modules/category/src/*"
       ],
       "@deposit/deposit": [
-        "libs/deposit/src"
+        "modules/deposit/src"
       ],
       "@deposit/deposit/*": [
-        "libs/deposit/src/*"
+        "modules/deposit/src/*"
       ],
       "@product/product": [
-        "libs/product/src"
+        "modules/product/src"
       ],
       "@product/product/*": [
-        "libs/product/src/*"
+        "modules/product/src/*"
       ],
       "@inventory/inventory": [
-        "libs/inventory/src"
+        "modules/inventory/src"
       ],
       "@inventory/inventory/*": [
-        "libs/inventory/src/*"
+        "modules/inventory/src/*"
       ]
     }
   }

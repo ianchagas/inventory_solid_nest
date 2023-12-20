@@ -1,31 +1,57 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { AddressModule } from 'libs/address/src';
-import { CategoryModule } from 'libs/category/src';
-import { InventoryModule } from 'libs/inventory/src';
-import { UnitOfMeasurementModule } from 'libs/unit-of-measurement/src';
+import { AddressModule } from 'modules/address/src';
+import { CreateAddressController } from 'modules/address/src/useCase/createAddress/create-address.controller';
+import { DeleteAddressController } from 'modules/address/src/useCase/deleteAddress/delete-address.controller';
+import { UpdateAddressController } from 'modules/address/src/useCase/updateAddress/update-address.controller';
+import { CategoryModule } from 'modules/category/src';
+import { CreateCategoryController } from 'modules/category/src/useCase/createCategory/create-category.controller';
+import { DeleteCategoryController } from 'modules/category/src/useCase/deleteCategory/delete-category.controller';
+import { FindAllCategoryController } from 'modules/category/src/useCase/findAllCategory/find-all-category.controller';
+import { FindCategoryByQueryController } from 'modules/category/src/useCase/findCategoryByQuery/find-category-by-query.controller';
+import { UpdateCategoryController } from 'modules/category/src/useCase/updateCategory/update-category.controller';
+import { DepositModule } from 'modules/deposit/src';
+import { CreateDepositController } from 'modules/deposit/src/useCase/createDeposit/create-deposit.controller';
+import { DeleteDepositController } from 'modules/deposit/src/useCase/deleteDeposit/delete-deposit.controller';
+import { FindAllDepositController } from 'modules/deposit/src/useCase/findAllDeposit/find-all-deposit.controller';
+import { FindDepositByQueryController } from 'modules/deposit/src/useCase/findDepositByQuery/find-deposit-by-query.controller';
+import { UpdateDepositController } from 'modules/deposit/src/useCase/updateDeposit/update-deposit.controller';
+import { InventoryModule } from 'modules/inventory/src';
+import { AdjustmentMovementController } from 'modules/inventory/src/useCase/adjustmentMovement/adjustment-movement.controller';
+import { EntryMovementController } from 'modules/inventory/src/useCase/entryMovement/entry-movement.controller';
+import { EntryMovementEachOneController } from 'modules/inventory/src/useCase/entryMovementEachOne/entry-movement-each-one.controller';
+import { ExitMovementController } from 'modules/inventory/src/useCase/exitMovement/exit-movement.controller';
+import { ExitMovementEachOneController } from 'modules/inventory/src/useCase/exitMovementEachOne/exit-movement-each-one.controller';
+import { UpdateCostPriceController } from 'modules/inventory/src/useCase/updateCostPrice/update-cost-price.controller';
+import { UpdateMinMaxQuantityController } from 'modules/inventory/src/useCase/updateMinMaxQuantity/update-min-max-quantity.controller';
+import { PeopleModule } from 'modules/people/src';
+import { CreatePeopleController } from 'modules/people/src/useCase/createPeople/create-people.controller';
+import { DeletePeopleController } from 'modules/people/src/useCase/deletePeople/delete-people.controller';
+import { FindAllPeopleController } from 'modules/people/src/useCase/findAllPeople/find-all-people.controller';
+import { FindAllPeopleWithAddressController } from 'modules/people/src/useCase/findAllPeopleWithAddress/find-all-people-with-address.controller';
+import { FindPeopleByQueryController } from 'modules/people/src/useCase/findPeopleByQuery/find-people-by-query.controller';
+import { FindPeopleByQueryWithAddressController } from 'modules/people/src/useCase/findPeopleByQueryWithAddress/find-people-by-query-with-address.controller';
+import { UpdatePeopleController } from 'modules/people/src/useCase/updatePeople/update-people.controller';
+import { ProductModule } from 'modules/product/src';
+import { CreateProductController } from 'modules/product/src/useCase/createProduct/create-product.controller';
+import { DeleteProductController } from 'modules/product/src/useCase/deleteProduct/delete-product.controller';
+import { FindAllProductController } from 'modules/product/src/useCase/findAllProduct/find-all-product.controller';
+import { FindProductByQueryController } from 'modules/product/src/useCase/findProductByQuery/find-product-by-query.controller';
+import { UpdateProductController } from 'modules/product/src/useCase/updateProduct/update-product.controller';
+import { SharedModule } from 'modules/shared/src';
+import { AuthMiddleware } from 'modules/shared/src/middleware/auth-middleware';
+import { UnitOfMeasurementModule } from 'modules/unit-of-measurement/src';
+import { CreateUnController } from 'modules/unit-of-measurement/src/useCase/createUn/create-un.controller';
+import { DeleteUnController } from 'modules/unit-of-measurement/src/useCase/deleteUn/delete-un.controller';
+import { FindAllUnController } from 'modules/unit-of-measurement/src/useCase/findAllUn/find-all-un.controller';
+import { FindUnByQueryController } from 'modules/unit-of-measurement/src/useCase/findUnByQuery/find-un-by-query.controller';
+import { UpdateUnController } from 'modules/unit-of-measurement/src/useCase/updateUn/update-un.controller';
+import { UserModule } from 'modules/user/src';
+import { CreateUserController } from 'modules/user/src/useCase/createUser/create-user.controller';
+import { DeleteUserController } from 'modules/user/src/useCase/deleteUser/delete-user.controller';
+import { FindUserController } from 'modules/user/src/useCase/findUser/find-user.controller';
+import { UpdateUserController } from 'modules/user/src/useCase/updateUser/update-user.controller';
 import { getMetadataArgsStorage } from 'typeorm';
 
-import { CreateAddressController } from '@address/address/useCase/createAddress/create-address.controller';
-import { DeleteAddressController } from '@address/address/useCase/deleteAddress/delete-address.controller';
-import { UpdateAddressController } from '@address/address/useCase/updateAddress/update-address.controller';
-import { CreateCategoryController } from '@category/category/useCase/createCategory/create-category.controller';
-import { DeleteCategoryController } from '@category/category/useCase/deleteCategory/delete-category.controller';
-import { FindAllCategoryController } from '@category/category/useCase/findAllCategory/find-all-category.controller';
-import { FindCategoryByQueryController } from '@category/category/useCase/findCategoryByQuery/find-category-by-query.controller';
-import { UpdateCategoryController } from '@category/category/useCase/updateCategory/update-category.controller';
-import { DepositModule } from '@deposit/deposit';
-import { CreateDepositController } from '@deposit/deposit/useCase/createDeposit/create-deposit.controller';
-import { DeleteDepositController } from '@deposit/deposit/useCase/deleteDeposit/delete-deposit.controller';
-import { FindAllDepositController } from '@deposit/deposit/useCase/findAllDeposit/find-all-deposit.controller';
-import { FindDepositByQueryController } from '@deposit/deposit/useCase/findDepositByQuery/find-deposit-by-query.controller';
-import { UpdateDepositController } from '@deposit/deposit/useCase/updateDeposit/update-deposit.controller';
-import { AdjustmentMovementController } from '@inventory/inventory/useCase/adjustmentMovement/adjustment-movement.controller';
-import { EntryMovementController } from '@inventory/inventory/useCase/entryMovement/entry-movement.controller';
-import { EntryMovementEachOneController } from '@inventory/inventory/useCase/entryMovementEachOne/entry-movement-each-one.controller';
-import { ExitMovementController } from '@inventory/inventory/useCase/exitMovement/exit-movement.controller';
-import { ExitMovementEachOneController } from '@inventory/inventory/useCase/exitMovementEachOne/exit-movement-each-one.controller';
-import { UpdateCostPriceController } from '@inventory/inventory/useCase/updateCostPrice/update-cost-price.controller';
-import { UpdateMinMaxQuantityController } from '@inventory/inventory/useCase/updateMinMaxQuantity/update-min-max-quantity.controller';
 import {
   MiddlewareConsumer,
   Module,
@@ -34,32 +60,6 @@ import {
 } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { PeopleModule } from '@people/people';
-import { CreatePeopleController } from '@people/people/useCase/createPeople/create-people.controller';
-import { DeletePeopleController } from '@people/people/useCase/deletePeople/delete-people.controller';
-import { FindAllPeopleController } from '@people/people/useCase/findAllPeople/find-all-people.controller';
-import { FindAllPeopleWithAddressController } from '@people/people/useCase/findAllPeopleWithAddress/find-all-people-with-address.controller';
-import { FindPeopleByQueryController } from '@people/people/useCase/findPeopleByQuery/find-people-by-query.controller';
-import { FindPeopleByQueryWithAddressController } from '@people/people/useCase/findPeopleByQueryWithAddress/find-people-by-query-with-address.controller';
-import { UpdatePeopleController } from '@people/people/useCase/updatePeople/update-people.controller';
-import { ProductModule } from '@product/product';
-import { CreateProductController } from '@product/product/useCase/createProduct/create-product.controller';
-import { DeleteProductController } from '@product/product/useCase/deleteProduct/delete-product.controller';
-import { FindAllProductController } from '@product/product/useCase/findAllProduct/find-all-product.controller';
-import { FindProductByQueryController } from '@product/product/useCase/findProductByQuery/find-product-by-query.controller';
-import { UpdateProductController } from '@product/product/useCase/updateProduct/update-product.controller';
-import { SharedModule } from '@shared/shared';
-import { AuthMiddleware } from '@shared/shared/middleware/auth-middleware';
-import { CreateUnController } from '@unit_of_measurement/unit-of-measurement/useCase/createUn/create-un.controller';
-import { DeleteUnController } from '@unit_of_measurement/unit-of-measurement/useCase/deleteUn/delete-un.controller';
-import { FindAllUnController } from '@unit_of_measurement/unit-of-measurement/useCase/findAllUn/find-all-un.controller';
-import { FindUnByQueryController } from '@unit_of_measurement/unit-of-measurement/useCase/findUnByQuery/find-un-by-query.controller';
-import { UpdateUnController } from '@unit_of_measurement/unit-of-measurement/useCase/updateUn/update-un.controller';
-import { UserModule } from '@user/user';
-import { CreateUserController } from '@user/user/useCase/createUser/create-user.controller';
-import { DeleteUserController } from '@user/user/useCase/deleteUser/delete-user.controller';
-import { FindUserController } from '@user/user/useCase/findUser/find-user.controller';
-import { UpdateUserController } from '@user/user/useCase/updateUser/update-user.controller';
 
 @Module({
   imports: [
@@ -88,75 +88,74 @@ import { UpdateUserController } from '@user/user/useCase/updateUser/update-user.
       cli: {
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       },
-      extra: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
+      // extra: {
+      //   ssl: {
+      //     rejectUnauthorized: false,
+      //   },
+      // },
     } as TypeOrmModuleOptions),
   ],
   providers: [],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthMiddleware)
-      .exclude(
-        {
-          path: '/api/user/login',
-          method: RequestMethod.POST,
-        },
-        {
-          path: '/api/inventory/find-all',
-          method: RequestMethod.GET,
-        },
-        {
-          path: '/api/product/find',
-          method: RequestMethod.GET,
-        },
-      )
-      .forRoutes(
-        CreateUserController,
-        UpdateUserController,
-        FindUserController,
-        DeleteUserController,
-        CreateUnController,
-        DeleteUnController,
-        FindAllUnController,
-        FindUnByQueryController,
-        UpdateUnController,
-        CreateProductController,
-        DeleteProductController,
-        FindAllProductController,
-        FindProductByQueryController,
-        UpdateProductController,
-        CreatePeopleController,
-        DeletePeopleController,
-        FindAllPeopleController,
-        FindAllPeopleWithAddressController,
-        FindPeopleByQueryController,
-        FindPeopleByQueryWithAddressController,
-        UpdatePeopleController,
-        AdjustmentMovementController,
-        EntryMovementController,
-        EntryMovementEachOneController,
-        ExitMovementController,
-        ExitMovementEachOneController,
-        UpdateCostPriceController,
-        UpdateMinMaxQuantityController,
-        CreateDepositController,
-        DeleteDepositController,
-        FindAllDepositController,
-        FindDepositByQueryController,
-        UpdateDepositController,
-        CreateCategoryController,
-        DeleteCategoryController,
-        FindAllCategoryController,
-        FindCategoryByQueryController,
-        UpdateCategoryController,
-        CreateAddressController,
-        DeleteAddressController,
-        UpdateAddressController,
-      );
-  }
-}
+export class AppModule {}
+// configure(consumer: MiddlewareConsumer) {
+//   consumer
+//     .apply(AuthMiddleware)
+//     .exclude(
+//       {
+//         path: '/api/user/login',
+//         method: RequestMethod.POST,
+//       },
+//       {
+//         path: '/api/inventory/find-all',
+//         method: RequestMethod.GET,
+//       },
+//       {
+//         path: '/api/product/find',
+//         method: RequestMethod.GET,
+//       },
+//     )
+//     .forRoutes(
+//       CreateUserController,
+//       UpdateUserController,
+//       FindUserController,
+//       DeleteUserController,
+//       CreateUnController,
+//       DeleteUnController,
+//       FindAllUnController,
+//       FindUnByQueryController,
+//       UpdateUnController,
+//       CreateProductController,
+//       DeleteProductController,
+//       FindAllProductController,
+//       FindProductByQueryController,
+//       UpdateProductController,
+//       CreatePeopleController,
+//       DeletePeopleController,
+//       FindAllPeopleController,
+//       FindAllPeopleWithAddressController,
+//       FindPeopleByQueryController,
+//       FindPeopleByQueryWithAddressController,
+//       UpdatePeopleController,
+//       AdjustmentMovementController,
+//       EntryMovementController,
+//       EntryMovementEachOneController,
+//       ExitMovementController,
+//       ExitMovementEachOneController,
+//       UpdateCostPriceController,
+//       UpdateMinMaxQuantityController,
+//       CreateDepositController,
+//       DeleteDepositController,
+//       FindAllDepositController,
+//       FindDepositByQueryController,
+//       UpdateDepositController,
+//       CreateCategoryController,
+//       DeleteCategoryController,
+//       FindAllCategoryController,
+//       FindCategoryByQueryController,
+//       UpdateCategoryController,
+//       CreateAddressController,
+//       DeleteAddressController,
+//       UpdateAddressController,
+//     );
+// }
